@@ -9,3 +9,4 @@ requests_oauthlib
 djangorestframework
 django_rq
 django_redis
+slackclient

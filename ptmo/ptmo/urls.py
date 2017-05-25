@@ -20,6 +20,6 @@ from views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^slack/button/', SlackButtonApi.as_view,'api-slack-button'),
-    url(r'^slack/options/', SlackButtonApi.as_view,'api-slack-options'),
+    url(r'^slack/button/', SlackButtonApi.as_view, name='api-slack-button'),
+    url(r'^slack/options/', SlackButtonApi.as_view, name='api-slack-options'),
 ]
