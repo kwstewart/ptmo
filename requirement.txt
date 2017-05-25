@@ -1,0 +1,11 @@
+websocket-client
+requests
+ndg-httpsclient
+
+django
+python-dateutil
+psycopg2
+requests_oauthlib
+djangorestframework
+django_rq
+django_redis
