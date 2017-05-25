@@ -16,6 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from views import *
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^slack/button/', SlackButtonApi.as_view,'api-slack-button'),
+    url(r'^slack/options/', SlackButtonApi.as_view,'api-slack-options'),
 ]
