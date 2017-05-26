@@ -7,7 +7,7 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 def create_level(apps, schema_editor):
-    Level = apps.get_model("level","Level")
+    Level = apps.get_model("ptmo","Level")
     level_1 = Level(id=0, name="tutorial", text="The tutorial level.")
     level_1.save()
 
