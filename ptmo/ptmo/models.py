@@ -15,6 +15,7 @@ class Location(models.Model):
 class Room(models.Model):
     location    = models.ForeignKey(Location)
     name                = models.CharField(max_length=64)
+    clean_name          = models.CharField(max_length=64, blank=True, null=True)
     text               = models.CharField(max_length=255)
     
     class Meta:
@@ -28,7 +29,6 @@ class Room(models.Model):
 class Door(models.Model):
     curr_room    = models.ForeignKey(Room, related_name="current_room")
     dest_room    = models.ForeignKey(Room, related_name="destination_room")
-    name                = models.CharField(max_length=64)
     text                = models.CharField(max_length=16)
     locked      = models.BooleanField(default=False)
 

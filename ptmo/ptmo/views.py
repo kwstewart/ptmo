@@ -72,14 +72,14 @@ def load_room(payload):
 
     dest_room = dr_q[0]
 
-    drd_q = Door.objects.filter(dest_room__name=dest_room)
+    drd_q = Door.objects.filter(curr_room__name=dest_room)
 
     if cr_q.exists():
         slack_message = payload['original_message']
-        slack_message['attachments'][0]['actions']=[]
-        slack_message['attachments'].append(dict(text=" ",footer=dest_room.name))
+        slack_message['attachments'] = []
+        slack_message['attachments'].append(dict(text=" ",footer="-> "+dest_room.clean_name))
     else:
-        slack_message = dict()
+        slack_message = dict(text="Good luck!")
     
     new_slack_message = dict(
         channel     = payload['channel']['id'],
@@ -93,8 +93,8 @@ def load_room(payload):
         ]
     )
     for door in drd_q:
-        door_name = "room__{}__{}__{}".format(location, dest_room, door.room.name)
-        new_slack_message['attachments'][0].append(dict(
+        door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
+        new_slack_message['attachments'][0]['actions'].append(dict(
             name    = door_name,
             type    = "button",
             text    = door.text,
