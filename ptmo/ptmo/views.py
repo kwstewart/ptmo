@@ -24,7 +24,7 @@ class StartTutorialApi(APIView):
             attachments = [dict(
                 callback_id = "tutorial",
                 actions = [dict(
-                    name    = "room__tutorial__blank__roadside",
+                    name    = "room__tutorial_woods__blank__roadside",
                     type    = "button",
                     text    = "Start",
                     value   = "true"
@@ -41,7 +41,12 @@ class SlackButtonApi(APIView):
     def post(self, request, *args, **kwargs):
         payload = json.loads(request.data['payload'])
         if payload['actions'][0]['name'].startswith('room'):
-            slack_message = load_room(payload)
+            room_parts = payload['actions'][0]['name'].split("__")
+            action = room_parts[0]
+            location = room_parts[1]
+            cr = room_parts[2]
+            dr = room_parts[3]            
+            slack_message = load_room(payload, location, dr, cr)
         elif payload['actions'][0]['name'].startswith('item'):
             slack_message = load_item(payload)
         elif payload['actions'][0]['name'].startswith('look'):
@@ -58,12 +63,7 @@ def invalid_button(payload):
     )
     return slack_message
 
-def load_room(payload, skip_history=False):
-    room_parts = payload['actions'][0]['name'].split("__")
-    action = room_parts[0]
-    location = room_parts[1]
-    cr = room_parts[2]
-    dr = room_parts[3]
+def load_room(payload, location, dr, cr = None, skip_history = False):
 
     cr_q = Room.objects.filter(location__name=location, name=cr)
 
@@ -168,13 +168,25 @@ def load_room(payload, skip_history=False):
     return slack_message
 
 def look(payload):
-    import pdb; pdb.set_trace()
-    room_parts = payload['actions'][0]['name'].split("__")
+    
+    room_parts = payload['actions'][0]['value'].split("__")
     action = room_parts[0]
     location = room_parts[1]
     room = room_parts[2]
+    item = room_parts[3]
 
+    room_item = RoomItem.objects.get(room=room, item=item)
+    room_item.inspected = True
+    room_item.save()
 
+    slack_message = dict(
+        channel = payload['channel'],
+        text    = room_item.item.inspect_text
+    )
+    sc = SlackClient(settings.BOT_TOKEN)
+    sc.api_call("chat.postMessage",**slack_message)
+
+    return load_room(payload, location, room, skip_history = True)
 
 
 
