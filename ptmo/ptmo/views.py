@@ -11,6 +11,32 @@ from django.conf import settings
 from urllib import urlencode
 from slackclient import SlackClient
 
+from models import *
+
+class SlackCommandApi(APIView):
+
+    def post(self, request, *args, **kwargs):
+        command = request.data['text']
+
+        if command == "tutorial":
+            slack_message = dict(
+                channel     = "#tutorial",
+                text        = "Let's get started!",
+                attachments = [dict(
+                    callback_id = "tutorial",
+                    actions = [dict(
+                        name    = "room__tutorial__blank__parking_lot",
+                        type    = "button",
+                        text    = "Start",
+                        value   = "true"
+
+                    )]
+                )]
+            )
+        return Response(slack_message)
+
+
+
 class SlackButtonApi(APIView):
 
     def post(self, request, *args, **kwargs):
@@ -24,7 +50,6 @@ class SlackButtonApi(APIView):
         return Response(slack_message)
 
 
-
 def invalid_button(payload):
     slack_message = dict(
         channel = payload['channel'],
@@ -36,61 +61,48 @@ def load_room(payload):
     room_parts = payload['actions'][0]['name'].split("__")
     action = room_parts[0]
     location = room_parts[1]
-    current_room = room_parts[2]
-    target = room_parts[3]
-    if target == "ballroom":
+    cr = room_parts[2]
+    dr = room_parts[3]
+
+    cr_q = Room.objects.filter(location=location, name=cr)
+
+    dr_q = Room.objects.filter(location=location, name=dr)
+
+    if not dr_q.exists():
+        return invalid_button(payload)
+
+    dest_room = dr_q[0]
+
+    drd_q = Door.objects.filter(room=dest_room)
+
+    if cr_q.exists():
         slack_message = payload['original_message']
         slack_message['attachments'][0]['actions']=[]
-        slack_message['attachments'].append(dict(text=" ",footer=target))
-        new_slack_message = dict(
-            channel=payload['channel']['id'],
-            text="You enter a large ballroom with tapestry lined walls, yada yada, *large chest* on west wall below yada yada, blah blah.\n\nA door to the West heads to the *Hall Door*.  Behind the stage to the North a *Musician's Closet Door* can be seen.",
-            attachments=[dict(
+        slack_message['attachments'].append(dict(text=" ",footer=dest_room.name))
+    else:
+        slack_message = dict()
+    
+    new_slack_message = dict(
+        channel     = payload['channel']['id'],
+        text        = dest_room.text
+        attachments =[
+            dict(
                 text="What do you do?",
-                callback_id="email",
-                actions=[
-                    dict(
-                        name="room__manor__ballroom__hallway",
-                        type="button",
-                        text="Hallway Door",
-                        value=True
-                    ),
-                    dict(
-                        name="room__manor__ballroom__musicans_closet",
-                        type="button",
-                        text="Musician's closet",
-                        value=True
-                    ),
-                    dict(
-                        name="item__manor__ballroom__chest",
-                        type="button",
-                        text="Open Chest",
-                        value=True
-                    )
-                ]
-            )]
-        )
-    elif target == "musicans_closet":
-        slack_message = payload['original_message']
-        slack_message['attachments'][0]['actions']=[]
-        slack_message['attachments'].append(dict(text=" ",footer=target))
-        new_slack_message = dict(
-            channel=payload['channel']['id'],
-            text="Oh shit!  There are skeletons in the closet",
-            attachments=[dict(
-                text="What do you do?",
-                callback_id="email",
-                actions=[
-                    dict(
-                        name="room__manor__musicans_closet__ballroom",
-                        type="button",
-                        text="Ballroom",
-                        value=True
-                    )
-                ]
-            )]
-        )
-    sc = SlackClient(settings.bot_token)
+                callback_id="slack_user_id",
+                actions=[]
+            )
+        ]
+    )
+    for door in drd_q:
+        door_name = "room__{}__{}__{}".format(location, dest_room, door.room.name)
+        new_slack_message['attachments'][0].append(dict(
+            name    = door_name,
+            type    = "button",
+            text    = door.text,
+            value   = True
+        ))
+
+    sc = SlackClient(settings.BOT_TOKEN)
     sc.api_call("chat.postMessage",**new_slack_message)
     return slack_message
 
