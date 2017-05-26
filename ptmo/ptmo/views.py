@@ -13,7 +13,7 @@ from slackclient import SlackClient
 
 from models import *
 
-class SlackCommandApi(APIView):
+class StartTutorialApi(APIView):
 
     def post(self, request, *args, **kwargs):
         command = request.data['text']
