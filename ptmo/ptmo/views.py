@@ -103,7 +103,7 @@ def load_room(payload, location, dr, cr = None, skip_history = False):
                 ]
             ),
             dict(
-                text        = " ",
+                title       = "Act",
                 callback_id = "slack_user_id",
                 actions     = []
             )
