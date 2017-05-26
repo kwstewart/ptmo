@@ -6,6 +6,10 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 
+def create_level(apps, schema_editor):
+    Level = apps.get_model("level","Level")
+    level_1 = Level(id=0, name="tutorial", text="The tutorial level.")
+    level_1.save()
 
 class Migration(migrations.Migration):
 
@@ -37,6 +41,7 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Levels',
             },
         ),
+        migrations.RunPython(create_level),
         migrations.CreateModel(
             name='RoomItem',
             fields=[
@@ -117,7 +122,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='location',
             name='level',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='ptmo.Level'),
+            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='ptmo.Level'),
             preserve_default=False,
         ),
     ]
