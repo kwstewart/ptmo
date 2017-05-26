@@ -38,7 +38,7 @@ class Item(models.Model):
     locked      = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = "Door"
-        verbose_name_plural = "Doors"
+        verbose_name = "Item"
+        verbose_name_plural = "Items"
 
 
