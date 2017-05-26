@@ -59,6 +59,7 @@ class Door(models.Model):
 class Item(models.Model):
     name            = models.CharField(max_length=16)
     inspect_text    = models.TextField()
+    obtainable      = models.BooleanField(default=False)
 
     class Meta:
         verbose_name        = "Item"
