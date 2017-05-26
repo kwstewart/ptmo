@@ -163,28 +163,27 @@ def load_room(payload, location, dr, cr = None, skip_history = False):
             )
         new_slack_message['attachments'][1]['actions'].append(item_dict)
 
-    sc = SlackClient(settings.BOT_TOKEN)
-    sc.api_call("chat.postMessage",**new_slack_message)
-    return slack_message
+    if skip_history:
+        new_slack_message['attachments'].append(payload['original_message']['attachments'])
+        return new_slack_message
+    else:
+        sc = SlackClient(settings.BOT_TOKEN)
+        sc.api_call("chat.postMessage",**new_slack_message)
+        return slack_message
 
 def look(payload):
-    
-    room_parts = payload['actions'][0]['value'].split("__")
+
+    room_parts = payload['actions'][0]['selected_options'][0]['value'].split("__")
     action = room_parts[0]
     location = room_parts[1]
     room = room_parts[2]
     item = room_parts[3]
 
-    room_item = RoomItem.objects.get(room=room, item=item)
+    room_item = RoomItem.objects.get(room__name=room, item__name=item)
     room_item.inspected = True
     room_item.save()
 
-    slack_message = dict(
-        channel = payload['channel'],
-        text    = room_item.item.inspect_text
-    )
-    sc = SlackClient(settings.BOT_TOKEN)
-    sc.api_call("chat.postMessage",**slack_message)
+    payload['original_message']['attachments'] = dict(text=room_item.item.inspect_text, mrkdwn_in=["text"])
 
     return load_room(payload, location, room, skip_history = True)
 

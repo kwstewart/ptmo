@@ -41,7 +41,7 @@ admin.site.register(Item, ItemAdmin)
 
 
 class RoomItemAdmin(admin.ModelAdmin):
-    list_display = ('room', 'item')
+    list_display = ('item', 'room')
     search_fields = ['room','item']
     save_as = True
 admin.site.register(RoomItem, RoomItemAdmin)
