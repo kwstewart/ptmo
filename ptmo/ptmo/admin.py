@@ -27,7 +27,7 @@ admin.site.register(Room, RoomAdmin)
 
 
 class DoorAdmin(admin.ModelAdmin):
-    list_display = ('button_text', 'curr_room', 'dest_room')
+    list_display = ('button_text', 'curr_room', 'dest_room', 'inspect_text')
     search_fields = ['button_text', 'curr_room', 'dest_room']
     save_as = True
 admin.site.register(Door, DoorAdmin)

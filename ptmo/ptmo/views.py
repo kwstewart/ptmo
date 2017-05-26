@@ -44,9 +44,9 @@ class SlackButtonApi(APIView):
             room_parts = payload['actions'][0]['name'].split("__")
             action = room_parts[0]
             location = room_parts[1]
-            cr = room_parts[2]
-            dr = room_parts[3]            
-            slack_message = load_room(payload, location, dr, cr)
+            curr_room_name = room_parts[2]
+            dest_room_name = room_parts[3]            
+            slack_message = load_room(payload, location, dest_room_name, curr_room_name)
         elif payload['actions'][0]['name'].startswith('item'):
             slack_message = load_item(payload)
         elif payload['actions'][0]['name'].startswith('look'):
@@ -63,11 +63,11 @@ def invalid_button(payload):
     )
     return slack_message
 
-def load_room(payload, location, dr, cr = None, skip_history = False):
+def load_room(payload, location, dest_room_name, curr_room_name = None, history = []):
 
-    cr_q = Room.objects.filter(location__name=location, name=cr)
+    cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
 
-    dr_q = Room.objects.filter(location__name=location, name=dr)
+    dr_q = Room.objects.filter(location__name=location, name=dest_room_name)
 
     if not dr_q.exists():
         return invalid_button(payload)
@@ -77,8 +77,7 @@ def load_room(payload, location, dr, cr = None, skip_history = False):
     if not skip_history:
         if cr_q.exists():
             slack_message = payload['original_message']
-            slack_message['attachments'] = []
-            slack_message['attachments'].append(dict(text=" ",footer="-> "+dest_room.clean_name))
+            slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
         else:
             slack_message = dict(text="Good luck!")
 
@@ -186,14 +185,14 @@ def look(payload):
         room_item = RoomItem.objects.get(room__name=room, item__name=item)
         room_item.inspected = True
         room_item.save()
-        inspect_text = room_item.item.inspect_text
+        inspect_text = "{}? - {}".format(room_item.item.name, room_item.item.inspect_text)
     elif action == "door":
         door = Door.objects.get(curr_room__name=room, dest_room__name=item)
         door.inspected = True
         door.save()
-        inspect_text = door.inspect_text
+        inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
 
-    payload['original_message']['attachments'] = dict(text=inspect_text, mrkdwn_in=["text"])
+    payload['original_message']['attachments'] = dict(text=" ", footer=inspect_text, mrkdwn_in=["text","footer"])
 
     return load_room(payload, location, room, skip_history = True)
 
