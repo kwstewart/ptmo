@@ -48,7 +48,7 @@ class Door(models.Model):
     inspect_text    = models.TextField()
     attempted       = models.BooleanField(default=False)
     locked          = models.BooleanField(default=False)
-    lock_text       = models.CharField(max_length=16, null=True, blank=True)
+    lock_text       = models.CharField(max_length=64, null=True, blank=True)
 
     class Meta:
         verbose_name        = "Door"
@@ -77,7 +77,7 @@ class RoomItem(models.Model):
     inspected   = models.BooleanField(default=False)
     attempted   = models.BooleanField(default=False)
     locked      = models.BooleanField(default=False)
-    lock_text   = models.CharField(max_length=16, null=True, blank=True)
+    lock_text   = models.CharField(max_length=64, null=True, blank=True)
 
     class Meta:
         verbose_name        = "RoomItem"

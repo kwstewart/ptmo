@@ -34,7 +34,7 @@ admin.site.register(Door, DoorAdmin)
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'inspect_text')
+    list_display = ('name', 'inspect_text', 'obtainable')
     search_fields = ['name']
     save_as = True
 admin.site.register(Item, ItemAdmin)
