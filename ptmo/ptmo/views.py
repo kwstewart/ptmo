@@ -16,11 +16,12 @@ from models import *
 class StartTutorialApi(APIView):
 
     def post(self, request, *args, **kwargs):
-        command = request.data['text']
+
+        level = Level.objects.get(name='tutorial')
 
         slack_message = dict(
             channel     = "#tutorial",
-            text        = "Let's get started!",
+            text        = level.text,
             attachments = [dict(
                 callback_id = "tutorial",
                 actions = [dict(
@@ -65,16 +66,19 @@ def invalid_button(payload):
 
 def strip_actions(payload):
     stripped = []
-    for attachment in payload['original_message']['attachments']:
-        if 'callback_id' in attachment:
-            continue
-        stripped.append(attachment)
+    if 'original_message' in payload:
+        for attachment in payload['original_message']['attachments']:
+            if 'callback_id' in attachment:
+                continue
+            stripped.append(attachment)
 
-    payload['original_message']['attachments'] = stripped
-    return payload
+    return stripped
 
 
-def load_room(payload, location, dest_room_name, curr_room_name = None, history = []):
+def load_room(payload, location, dest_room_name, curr_room_name = None, new_room = True, history = []):
+
+    if not history:
+        history = strip_actions(payload)
 
     cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
 
@@ -91,8 +95,8 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, history 
         slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
     
     d_q = Door.objects.filter(curr_room=dest_room)
-    ud_q = Door.objects.filter(curr_room=dest_room, inspected=False)
-    uri_q = RoomItem.objects.filter(room=dest_room, inspected=False)    
+    ud_q = Door.objects.filter(curr_room=dest_room)
+    uri_q = RoomItem.objects.filter(room=dest_room)
     iri_q = RoomItem.objects.filter(room=dest_room, inspected=True).exclude(button_text=None)
 
     
@@ -174,16 +178,16 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, history 
             )
         new_slack_message['attachments'][1]['actions'].append(item_dict)
 
-    for hist in history:
-        new_slack_message['attachments'].append(hist)
-
-    if history:
-        new_slack_message['attachments'].append(payload['original_message']['attachments'])
-        return new_slack_message
-    else:
+    if new_room:
         sc = SlackClient(settings.BOT_TOKEN)
         sc.api_call("chat.postMessage",**new_slack_message)
         return slack_message
+
+    else:
+        for hist in history:
+            new_slack_message['attachments'].append(hist)
+        new_slack_message['attachments'].append(payload['original_message']['attachments'])
+        return new_slack_message
 
 def look(payload):
 
@@ -204,9 +208,9 @@ def look(payload):
         door.save()
         inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
 
-    payload['original_message']['attachments'] = dict(text=" ", footer=inspect_text, mrkdwn_in=["text","footer"])
+    payload['original_message']['attachments'].append(dict(text=" ", footer=inspect_text, mrkdwn_in=["text","footer"]))
 
-    return load_room(payload, location, room, skip_history = True)
+    return load_room(payload, location, room, history=strip_actions(payload['original_message']['attachments']), new_room=False)
 
 
 
