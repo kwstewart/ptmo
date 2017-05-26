@@ -84,7 +84,7 @@ def load_room(payload):
     
     new_slack_message = dict(
         channel     = payload['channel']['id'],
-        text        = dest_room.text
+        text        = dest_room.text,
         attachments =[
             dict(
                 text="What do you do?",
