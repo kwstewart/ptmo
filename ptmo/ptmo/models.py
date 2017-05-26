@@ -55,7 +55,7 @@ class Door(models.Model):
         verbose_name_plural = "Doors"
 
     def __unicode__(self):
-        return '%s' % (self.text)
+        return '%s' % (self.button_text)
 
 class Item(models.Model):
     name            = models.CharField(max_length=16)

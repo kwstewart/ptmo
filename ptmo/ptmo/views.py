@@ -24,7 +24,7 @@ class StartTutorialApi(APIView):
             attachments = [dict(
                 callback_id = "tutorial",
                 actions = [dict(
-                    name    = "room__tutorial__blank__parking_lot",
+                    name    = "room__tutorial__blank__roadside",
                     type    = "button",
                     text    = "Start",
                     value   = "true"
@@ -79,9 +79,9 @@ def load_room(payload):
     else:
         slack_message = dict(text="Good luck!")
 
-    d_q = Door.objects.filter(curr_room__name=dest_room)
-    uri_q = RoomItem.objects.filter(curr_room__name=dest_room, inspected=False)    
-    iri_q = RoomItem.objects.filter(curr_room__name=dest_room, inspected=True).exclude(button_text=None)
+    d_q = Door.objects.filter(curr_room=dest_room)
+    uri_q = RoomItem.objects.filter(room=dest_room, inspected=False)    
+    iri_q = RoomItem.objects.filter(room=dest_room, inspected=True).exclude(button_text=None)
 
     
     new_slack_message = dict(
@@ -93,7 +93,8 @@ def load_room(payload):
                 callback_id = "slack_user_id",
                 actions     = [
                     dict(
-                        type    = "select"
+                        name    = "look__{}__{}".format(location, dest_room),
+                        type    = "select",
                         options = []
                     )
                 ]
@@ -109,7 +110,7 @@ def load_room(payload):
     for room_item in uri_q:
         item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
         item_dict = dict(
-            text    = room_item.item.name
+            text    = room_item.item.name,
             value   = item_name
         )
         new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
@@ -117,7 +118,7 @@ def load_room(payload):
     for door in d_q:
         door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
         item_dict = dict(
-            text    = door.button_text
+            text    = door.button_text,
             value   = door_name
         )
         new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
