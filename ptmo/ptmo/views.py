@@ -179,11 +179,18 @@ def look(payload):
     room = room_parts[2]
     item = room_parts[3]
 
-    room_item = RoomItem.objects.get(room__name=room, item__name=item)
-    room_item.inspected = True
-    room_item.save()
+    if action == "item":
+        room_item = RoomItem.objects.get(room__name=room, item__name=item)
+        room_item.inspected = True
+        room_item.save()
+        inspect_text = room_item.item.inspect_text
+    elif action == "door":
+        door = Door.objects.get(curr_room__name=room, dest_room__name=item)
+        door.inspected = True
+        door.save()
+        inspect_text = door.inspect_text
 
-    payload['original_message']['attachments'] = dict(text=room_item.item.inspect_text, mrkdwn_in=["text"])
+    payload['original_message']['attachments'] = dict(text=inspect_text, mrkdwn_in=["text"])
 
     return load_room(payload, location, room, skip_history = True)
 
