@@ -44,6 +44,8 @@ class SlackButtonApi(APIView):
             slack_message = load_room(payload)
         elif payload['actions'][0]['name'].startswith('item'):
             slack_message = load_item(payload)
+        elif payload['actions'][0]['name'].startswith('look'):
+            slack_message = look(payload)
         else:
             slack_message = invalid_button(payload)
         return Response(slack_message)
@@ -56,7 +58,7 @@ def invalid_button(payload):
     )
     return slack_message
 
-def load_room(payload):
+def load_room(payload, skip_history=False):
     room_parts = payload['actions'][0]['name'].split("__")
     action = room_parts[0]
     location = room_parts[1]
@@ -72,12 +74,13 @@ def load_room(payload):
 
     dest_room = dr_q[0]
 
-    if cr_q.exists():
-        slack_message = payload['original_message']
-        slack_message['attachments'] = []
-        slack_message['attachments'].append(dict(text=" ",footer="-> "+dest_room.clean_name))
-    else:
-        slack_message = dict(text="Good luck!")
+    if not skip_history:
+        if cr_q.exists():
+            slack_message = payload['original_message']
+            slack_message['attachments'] = []
+            slack_message['attachments'].append(dict(text=" ",footer="-> "+dest_room.clean_name))
+        else:
+            slack_message = dict(text="Good luck!")
 
     d_q = Door.objects.filter(curr_room=dest_room)
     uri_q = RoomItem.objects.filter(room=dest_room, inspected=False)    
@@ -163,6 +166,17 @@ def load_room(payload):
     sc = SlackClient(settings.BOT_TOKEN)
     sc.api_call("chat.postMessage",**new_slack_message)
     return slack_message
+
+def look(payload):
+    import pdb; pdb.set_trace()
+    room_parts = payload['actions'][0]['name'].split("__")
+    action = room_parts[0]
+    location = room_parts[1]
+    room = room_parts[2]
+
+
+
+
 
 def load_item(payload):
     room_parts = payload['actions'][0]['name'].split("__")
