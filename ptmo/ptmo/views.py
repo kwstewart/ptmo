@@ -63,16 +63,16 @@ def load_room(payload):
     cr = room_parts[2]
     dr = room_parts[3]
 
-    cr_q = Room.objects.filter(location=location, name=cr)
+    cr_q = Room.objects.filter(location__name=location, name=cr)
 
-    dr_q = Room.objects.filter(location=location, name=dr)
+    dr_q = Room.objects.filter(location__name=location, name=dr)
 
     if not dr_q.exists():
         return invalid_button(payload)
 
     dest_room = dr_q[0]
 
-    drd_q = Door.objects.filter(room=dest_room)
+    drd_q = Door.objects.filter(dest_room__name=dest_room)
 
     if cr_q.exists():
         slack_message = payload['original_message']
