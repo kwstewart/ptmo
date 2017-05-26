@@ -21,5 +21,6 @@ from views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^slack/button/', SlackButtonApi.as_view(), name='api-slack-button'),
+    url(r'^slack/command/', SlackCommandApi.as_view(), name='api-slack-command'),
     url(r'^slack/options/', SlackButtonApi.as_view(), name='api-slack-options'),
 ]
