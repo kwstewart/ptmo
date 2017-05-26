@@ -18,21 +18,20 @@ class StartTutorialApi(APIView):
     def post(self, request, *args, **kwargs):
         command = request.data['text']
 
-        if command == "tutorial":
-            slack_message = dict(
-                channel     = "#tutorial",
-                text        = "Let's get started!",
-                attachments = [dict(
-                    callback_id = "tutorial",
-                    actions = [dict(
-                        name    = "room__tutorial__blank__parking_lot",
-                        type    = "button",
-                        text    = "Start",
-                        value   = "true"
+        slack_message = dict(
+            channel     = "#tutorial",
+            text        = "Let's get started!",
+            attachments = [dict(
+                callback_id = "tutorial",
+                actions = [dict(
+                    name    = "room__tutorial__blank__parking_lot",
+                    type    = "button",
+                    text    = "Start",
+                    value   = "true"
 
-                    )]
                 )]
-            )
+            )]
+        )
         return Response(slack_message)
 
 
