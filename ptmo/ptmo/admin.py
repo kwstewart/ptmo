@@ -20,7 +20,7 @@ admin.site.register(Room, RoomAdmin)
 
 class DoorAdmin(admin.ModelAdmin):
     list_display = ('curr_room', 'dest_room', 'text','locked')
-    search_fields = ['name']
+    search_fields = ['text']
     save_as = True
 admin.site.register(Door, DoorAdmin)
 
