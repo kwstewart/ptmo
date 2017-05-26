@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Level(models.Model):
     name = models.CharField(max_length=16)
-    text = models.CharField(max_length=255)
+    text = models.TextField()
 
     class Meta:
         verbose_name = "Level"
@@ -31,7 +31,7 @@ class Room(models.Model):
     location    = models.ForeignKey(Location)
     name        = models.CharField(max_length=64)
     clean_name  = models.CharField(max_length=64, blank=True, null=True)
-    text        = models.CharField(max_length=255)
+    text        = models.TextField()
     
     class Meta:
         verbose_name        = "Room"
@@ -45,7 +45,7 @@ class Door(models.Model):
     curr_room       = models.ForeignKey(Room, related_name="current_room")
     dest_room       = models.ForeignKey(Room, related_name="destination_room")
     button_text     = models.CharField(max_length=16)
-    inspect_text    = models.CharField(max_length=255)
+    inspect_text    = models.TextField()
     attempted       = models.BooleanField(default=False)
     locked          = models.BooleanField(default=False)
 
@@ -60,7 +60,7 @@ class Item(models.Model):
     room            = models.ForeignKey(Room)
     name            = models.CharField(max_length=16)
     button_text     = models.CharField(max_length=16)
-    inspect_text    = models.CharField(max_length=255)
+    inspect_text    = models.TextField()
     inspected       = models.BooleanField(default=False)
     attempted       = models.BooleanField(default=False)
     locked          = models.BooleanField(default=False)
