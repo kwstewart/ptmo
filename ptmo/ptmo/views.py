@@ -63,6 +63,17 @@ def invalid_button(payload):
     )
     return slack_message
 
+def strip_actions(payload):
+    stripped = []
+    for attachment in payload['original_message']['attachments']:
+        if 'callback_id' in attachment:
+            continue
+        stripped.append(attachment)
+
+    payload['original_message']['attachments'] = stripped
+    return payload
+
+
 def load_room(payload, location, dest_room_name, curr_room_name = None, history = []):
 
     cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
@@ -74,13 +85,11 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, history 
 
     dest_room = dr_q[0]
 
-    if not skip_history:
-        if cr_q.exists():
-            slack_message = payload['original_message']
-            slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
-        else:
-            slack_message = dict(text="Good luck!")
-
+    
+    if cr_q.exists():
+        slack_message = payload['original_message']
+        slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
+    
     d_q = Door.objects.filter(curr_room=dest_room)
     ud_q = Door.objects.filter(curr_room=dest_room, inspected=False)
     uri_q = RoomItem.objects.filter(room=dest_room, inspected=False)    
@@ -165,7 +174,10 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, history 
             )
         new_slack_message['attachments'][1]['actions'].append(item_dict)
 
-    if skip_history:
+    for hist in history:
+        new_slack_message['attachments'].append(hist)
+
+    if history:
         new_slack_message['attachments'].append(payload['original_message']['attachments'])
         return new_slack_message
     else:
