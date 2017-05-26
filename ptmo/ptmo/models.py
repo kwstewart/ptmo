@@ -37,7 +37,7 @@ class Door(models.Model):
         verbose_name_plural = "Doors"
 
     def __unicode__(self):
-        return '%s' % (self.name)
+        return '%s' % (self.text)
 
 
 class Item(models.Model):
