@@ -57,13 +57,8 @@ class Door(models.Model):
         return '%s' % (self.text)
 
 class Item(models.Model):
-    room            = models.ForeignKey(Room)
     name            = models.CharField(max_length=16)
-    button_text     = models.CharField(max_length=16, null=True, blank=True)
     inspect_text    = models.TextField()
-    inspected       = models.BooleanField(default=False)
-    attempted       = models.BooleanField(default=False)
-    locked          = models.BooleanField(default=False)
 
     class Meta:
         verbose_name        = "Item"
@@ -76,6 +71,10 @@ class Item(models.Model):
 class RoomItem(models.Model):
     room        = models.ForeignKey(Room)
     item        = models.ForeignKey(Item)
+    button_text = models.CharField(max_length=16, null=True, blank=True)
+    inspected       = models.BooleanField(default=False)
+    attempted       = models.BooleanField(default=False)
+    locked          = models.BooleanField(default=False)
 
     class Meta:
         verbose_name        = "RoomItem"
