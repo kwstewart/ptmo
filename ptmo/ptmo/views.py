@@ -83,6 +83,7 @@ def load_room(payload, location, dr, cr = None, skip_history = False):
             slack_message = dict(text="Good luck!")
 
     d_q = Door.objects.filter(curr_room=dest_room)
+    ud_q = Door.objects.filter(curr_room=dest_room, inspected=False)
     uri_q = RoomItem.objects.filter(room=dest_room, inspected=False)    
     iri_q = RoomItem.objects.filter(room=dest_room, inspected=True).exclude(button_text=None)
 
@@ -110,6 +111,7 @@ def load_room(payload, location, dr, cr = None, skip_history = False):
         ]
     )
 
+    # TODO: Combine these into 1 array so we can alphabetize
     for room_item in uri_q:
         item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
         item_dict = dict(
@@ -118,14 +120,15 @@ def load_room(payload, location, dr, cr = None, skip_history = False):
         )
         new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
 
-    for door in d_q:
-        door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
+    for door in ud_q:
+        door_name = "door__{}__{}__{}".format(location, dest_room, door.dest_room.name)
         item_dict = dict(
             text    = door.button_text,
             value   = door_name
         )
         new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
 
+    # TODO: Combine these into 1 array so we can alphabetize
     for door in d_q:
         door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
         door_dict = dict(

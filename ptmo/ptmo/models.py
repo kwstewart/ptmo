@@ -46,6 +46,7 @@ class Door(models.Model):
     dest_room       = models.ForeignKey(Room, related_name="destination_room")
     button_text     = models.CharField(max_length=16)
     inspect_text    = models.TextField()
+    inspected       = models.BooleanField(default=False)
     attempted       = models.BooleanField(default=False)
     locked          = models.BooleanField(default=False)
     lock_text       = models.CharField(max_length=64, null=True, blank=True)
