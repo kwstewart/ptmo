@@ -8,6 +8,9 @@ class Location(models.Model):
         verbose_name = "Location"
         verbose_name_plural = "Locations"
 
+    def __unicode__(self):
+        return '%s' % (self.name)
+
 
 class Room(models.Model):
     location    = models.ForeignKey(Location)
@@ -17,6 +20,9 @@ class Room(models.Model):
     class Meta:
         verbose_name = "Room"
         verbose_name_plural = "Rooms"
+
+    def __unicode__(self):
+        return '%s' % (self.name)
 
 
 class Door(models.Model):
@@ -30,6 +36,9 @@ class Door(models.Model):
         verbose_name = "Door"
         verbose_name_plural = "Doors"
 
+    def __unicode__(self):
+        return '%s' % (self.name)
+
 
 class Item(models.Model):
     curr_room    = models.ForeignKey(Room)
@@ -41,4 +50,5 @@ class Item(models.Model):
         verbose_name = "Item"
         verbose_name_plural = "Items"
 
-
+    def __unicode__(self):
+        return '%s' % (self.name)
