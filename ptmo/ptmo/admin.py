@@ -3,7 +3,7 @@ from django.contrib import admin
 from models import *
 
 
-class UserPreference(admin.ModelAdmin):
+class UserPreferenceAdmin(admin.ModelAdmin):
     list_display = ('user', 'key', 'value')
     search_fields = ['user', 'key', 'value']
     save_as = True
