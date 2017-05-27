@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from .models import UserPreference
+from rest_framework.response import Response
 
 def team_join(data):
     user = User.objects.create_user(

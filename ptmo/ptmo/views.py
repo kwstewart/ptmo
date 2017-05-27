@@ -32,8 +32,9 @@ class SlackWebhookApi(APIView):
     def post(self, request, *args, **kwargs):
         if 'challenge' in request.data:
             return Response(dict(challenge=request.data['challenge']))
-        if 'type' in request.data:
+        if 'event' in request.data and 'type' in request.data['event']:
             import webhooks
+            event_type = request.data['event']['type']
             if event_type == "team_join":
                 return webhooks.team_join(request.data)
 
@@ -87,14 +88,24 @@ def init_tutorial(request):
     con.close()
     
     # Only run this if the user doesn't already have a channel
-    sca = SlackClient(settings.ADMIN_TOKEN)
+    user = UserPreference.objects.filter(key='slack_user_id', value=request.data['user_id']).user
+    up_q = UserPreference.objects.filter(user=user, key='tutorial_channel_id')
+    if up_q.exists():
+        channel = up_q[0].value
+    else:
+        sca = SlackClient(settings.ADMIN_TOKEN)
 
-    resp = sca.api_call("groups.create",name="tutorial_"+request.data['user_id'])
+        resp = sca.api_call("groups.create",name="tutorial_"+request.data['user_id'])
 
-    # Set UserData and pull from there if group already exists
-    channel = resp['group']['id']
+        channel = resp['group']['id']
+        
+        UserPreference.objects.create(
+            user    = user,
+            key     = "tutorial_channel_id",
+            value   = channel
+        )
 
-    resp = sca.api_call("groups.invite",name=channel, user=settings.BOT_SLACK_USER_ID)            
+        resp = sca.api_call("groups.invite",name=channel, user=settings.BOT_SLACK_USER_ID)            
 
     slack_message = dict(
         response_type   = "ephemeral",
