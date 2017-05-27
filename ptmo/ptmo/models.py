@@ -79,6 +79,7 @@ class RoomItem(models.Model):
     attempted   = models.BooleanField(default=False)
     locked      = models.BooleanField(default=False)
     lock_text   = models.CharField(max_length=64, null=True, blank=True)
+    force_text  = models.CharField(max_length=64, null=True, blank=True)
 
     class Meta:
         verbose_name        = "RoomItem"

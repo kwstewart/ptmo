@@ -17,11 +17,8 @@ class StartTutorialApi(APIView):
 
     def post(self, request, *args, **kwargs):
 
-        level = Level.objects.get(name='tutorial')
-
         slack_message = tutorial_intro()
         return Response(slack_message)
-
 
 
 class SlackButtonApi(APIView):
@@ -36,7 +33,7 @@ class SlackButtonApi(APIView):
             dest_room_name = room_parts[3]            
             slack_message = load_room(payload, location, dest_room_name, curr_room_name)
         elif payload['actions'][0]['name'].startswith('item'):
-            slack_message = load_item(payload)
+            slack_message = open_item(payload)
         elif payload['actions'][0]['name'].startswith('look'):
             slack_message = look(payload)
         else:
@@ -45,6 +42,8 @@ class SlackButtonApi(APIView):
 
 
 def tutorial_intro():
+
+    level = Level.objects.get(name='tutorial')
     slack_message = dict(
         channel     = "#tutorial",
         text        = level.text,
@@ -81,7 +80,7 @@ def strip_actions(attachments):
 
 def load_room(payload, location, dest_room_name, curr_room_name = None, new_room = True, history = []):
 
-    if not history:
+    if not history and 'original_message' in payload:
         history = strip_actions(payload['original_message']['attachments'])
 
     cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
@@ -100,6 +99,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
     else:
         slack_message = tutorial_intro()
+        slack_message['attachments'].append(dict(text=' ', footer='Good luck'))
     
     d_q = Door.objects.filter(curr_room=dest_room)
     ud_q = Door.objects.filter(curr_room=dest_room)
@@ -221,16 +221,15 @@ def look(payload):
 
 
 
-def load_item(payload):
+def open_item(payload):
     room_parts = payload['actions'][0]['name'].split("__")
     action = room_parts[0]
     location = room_parts[1]
-    current_room = room_parts[2]
+    room = room_parts[2]
     target = room_parts[3]
-    if current_room == "ballroom":
-        if target == "chest":
-            slack_message = payload['original_message']
-            slack_message['attachments'][0]['actions'][2]['style']='danger'
-            slack_message['attachments'][0]['actions'][2]['confirm']={"title":"You can't do that","text":"The chest is locked.","ok_text":"Try again","dismiss_text":"Got it"}
-            slack_message['attachments'].append(dict(text=" ",footer="Open Chest - The chest is locked"))
-    return slack_message
+
+    room_item = RoomItem.objects.get(room__name=room, item__name=target)
+    
+    payload['original_message']['attachments'].append(dict(text=" ",footer="Open {} - {}".format(room_item.item.name, room_item.force_text)))
+    
+    return load_room(payload, location, room, history=strip_actions(payload['original_message']['attachments']), new_room=False)
