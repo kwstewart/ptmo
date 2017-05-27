@@ -41,7 +41,7 @@ class SlackButtonApi(APIView):
         elif payload['actions'][0]['name'].startswith('item'):
             slack_message = open_item(payload)
         elif payload['actions'][0]['name'].startswith('start'):
-            slack_message = tutorial_intro()
+            slack_message = tutorial_intro(request)
         elif payload['actions'][0]['name'].startswith('look'):
             slack_message = look(payload)
         else:
@@ -50,13 +50,12 @@ class SlackButtonApi(APIView):
 
 
 def init_tutorial(request):
-    import pdb; pdb.set_trace()
     from psycopg2 import connect
     from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
     db_settings = settings.DATABASES['default']
 
-    con = connect(user=db_settings['USER'], host = db_settings['HOST'], password=db_settings['PASSWORD'])
+    con = connect(dbname=db_settings['NAME'], user=db_settings['USER'], host = db_settings['HOST'], password=db_settings['PASSWORD'])
     dbname = "{}_{}".format(db_settings['NAME'],request.data['user_id'])
 
     con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
@@ -64,6 +63,9 @@ def init_tutorial(request):
     cur.execute('CREATE DATABASE ' + dbname)
     cur.close()
     con.close()
+    import pdb; pdb.set_trace()
+    sc = SlackClient(settings.BOT_TOKEN)
+    resp = sc.api_call("groups.create",name="tutorial_"+request.data['user_id'])
 
     slack_message = dict(
         response_type   = "ephemeral",
@@ -81,10 +83,12 @@ def init_tutorial(request):
     )
     return slack_message
 
-def tutorial_intro():
+def tutorial_intro(request):
+
+    slack_message = dict(text="Good luck")
 
     level = Level.objects.get(name='tutorial')
-    slack_message = dict(
+    new_slack_message = dict(
         channel     = "#tutorial",
         text        = level.text,
         attachments = [dict(
@@ -98,6 +102,8 @@ def tutorial_intro():
             )]
         )]
     )
+    sc = SlackClient(settings.BOT_TOKEN)
+    sc.api_call("chat.postMessage",**new_slack_message)
     return slack_message
 
 
