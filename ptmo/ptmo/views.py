@@ -19,20 +19,7 @@ class StartTutorialApi(APIView):
 
         level = Level.objects.get(name='tutorial')
 
-        slack_message = dict(
-            channel     = "#tutorial",
-            text        = level.text,
-            attachments = [dict(
-                callback_id = "tutorial",
-                actions = [dict(
-                    name    = "room__tutorial_woods__blank__roadside",
-                    type    = "button",
-                    text    = "Start",
-                    value   = "true"
-
-                )]
-            )]
-        )
+        slack_message = tutorial_intro()
         return Response(slack_message)
 
 
@@ -57,6 +44,24 @@ class SlackButtonApi(APIView):
         return Response(slack_message)
 
 
+def tutorial_intro():
+    slack_message = dict(
+        channel     = "#tutorial",
+        text        = level.text,
+        attachments = [dict(
+            callback_id = "tutorial",
+            actions = [dict(
+                name    = "room__tutorial_woods__blank__roadside",
+                type    = "button",
+                text    = "Start",
+                value   = "true"
+
+            )]
+        )]
+    )
+    return slack_message
+
+
 def invalid_button(payload):
     slack_message = dict(
         channel = payload['channel'],
@@ -64,13 +69,12 @@ def invalid_button(payload):
     )
     return slack_message
 
-def strip_actions(payload):
+def strip_actions(attachments):
     stripped = []
-    if 'original_message' in payload:
-        for attachment in payload['original_message']['attachments']:
-            if 'callback_id' in attachment:
-                continue
-            stripped.append(attachment)
+    for attachment in attachments:
+        if 'callback_id' in attachment:
+            continue
+        stripped.append(attachment)
 
     return stripped
 
@@ -78,7 +82,7 @@ def strip_actions(payload):
 def load_room(payload, location, dest_room_name, curr_room_name = None, new_room = True, history = []):
 
     if not history:
-        history = strip_actions(payload)
+        history = strip_actions(payload['original_message']['attachments'])
 
     cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
 
@@ -90,9 +94,12 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     dest_room = dr_q[0]
 
     
-    if cr_q.exists():
+    if 'original_message' in payload:
         slack_message = payload['original_message']
+        slack_message['attachments'] = strip_actions(payload['original_message']['attachments'])
         slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
+    else:
+        slack_message = tutorial_intro()
     
     d_q = Door.objects.filter(curr_room=dest_room)
     ud_q = Door.objects.filter(curr_room=dest_room)
