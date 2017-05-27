@@ -10,3 +10,4 @@ djangorestframework
 django_rq
 django_redis
 slackclient
+django-dynamic-db-router

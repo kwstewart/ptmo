@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from urllib import urlencode
 from slackclient import SlackClient
+from dynamic_db_router import in_database
 
 from models import *
 
@@ -84,11 +85,17 @@ def init_tutorial(request):
     except:
         cur.execute('DROP DATABASE ' + dbname)
         cur.execute('CREATE DATABASE ' + dbname)
+    
+    # Import the level
+    #f = open(r'C:\Users\n\Desktop\data.csv', 'r')
+    #cur.copy_from(f, temp_unicommerce_status, sep=',')
+    #f.close()
+
     cur.close()
     con.close()
     
     # Only run this if the user doesn't already have a channel
-    user = UserPreference.objects.filter(key='slack_user_id', value=request.data['user_id']).user
+    user = UserPreference.objects.get(key='slack_user_id', value=request.data['user_id']).user
     up_q = UserPreference.objects.filter(user=user, key='tutorial_channel_id')
     if up_q.exists():
         channel = up_q[0].value
@@ -98,7 +105,7 @@ def init_tutorial(request):
         resp = sca.api_call("groups.create",name="tutorial_"+request.data['user_id'])
 
         channel = resp['group']['id']
-        
+
         UserPreference.objects.create(
             user    = user,
             key     = "tutorial_channel_id",
@@ -129,10 +136,19 @@ def init_tutorial(request):
 
 def tutorial_intro(request):
 
-    channel ="#tutorial_"+json.loads(request.data['payload'])['user']['id']
+    payload = json.loads(request.data['payload'])
+    channel ="#tutorial_"+payload['user']['id']
+
+    # TODO: fix the channel link
     slack_message = dict(text="Head over to <> Good luck")
 
-    level = Level.objects.get(name='tutorial')
+    # TODO: Make this a function
+    db_config = settings.DATABASES['default']
+    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+
+    with in_database(db_config):
+        level = Level.objects.get(name='tutorial')
+        
     new_slack_message = dict(
        channel     = channel,
         text        = level.text,
