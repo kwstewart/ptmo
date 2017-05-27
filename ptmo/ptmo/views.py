@@ -27,6 +27,14 @@ class StartTutorialApi(APIView):
         return Response(slack_message)
 
 
+class SlackWebhookApi(APIView):
+
+    def post(self, request, *args, **kwargs):
+        if 'challenge' in request.data:
+            return Response(dict(challenge=request.data['challenge']))
+        return Response(dict())
+
+
 class SlackButtonApi(APIView):
 
     def post(self, request, *args, **kwargs):
@@ -55,41 +63,62 @@ def init_tutorial(request):
 
     db_settings = settings.DATABASES['default']
 
-    con = connect(dbname=db_settings['NAME'], user=db_settings['USER'], host = db_settings['HOST'], password=db_settings['PASSWORD'])
+    con = connect(
+        dbname      = db_settings['NAME'], 
+        user        = db_settings['USER'], 
+        host        = db_settings['HOST'], 
+        password    = db_settings['PASSWORD']
+    )
     dbname = "{}_{}".format(db_settings['NAME'],request.data['user_id'])
 
     con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
     cur = con.cursor()
-    cur.execute('CREATE DATABASE ' + dbname)
+    try:
+        cur.execute('CREATE DATABASE ' + dbname)
+    except:
+        cur.execute('DROP DATABASE ' + dbname)
+        cur.execute('CREATE DATABASE ' + dbname)
     cur.close()
     con.close()
-    import pdb; pdb.set_trace()
-    sc = SlackClient(settings.BOT_TOKEN)
-    resp = sc.api_call("groups.create",name="tutorial_"+request.data['user_id'])
+    
+    # Only run this if the user doesn't already have a channel
+    sca = SlackClient(settings.ADMIN_TOKEN)
+
+    resp = sca.api_call("groups.create",name="tutorial_"+request.data['user_id'])
+
+    # Set UserData and pull from there if group already exists
+    channel = resp['group']['id']
+
+    resp = sca.api_call("groups.invite",name=channel, user=settings.BOT_SLACK_USER_ID)            
 
     slack_message = dict(
         response_type   = "ephemeral",
         text            = "Your level has been generated.",
-        attachments     = [dict(
-            callback_id = "tutorial",
-            actions     = [dict(
-                name    = "start__tutorial",
-                type    = "button",
-                text    = "Begin",
-                value   = "true"
-
-            )]
-        )]
+        attachments     = [
+            dict(
+                callback_id = "tutorial",
+                text        = " ",
+                actions     = [
+                    dict(
+                        name    = "start__tutorial",
+                        type    = "button",
+                        text    = "Begin",
+                        value   = "true"
+                    )
+                ]
+            )
+        ]
     )
     return slack_message
 
 def tutorial_intro(request):
 
-    slack_message = dict(text="Good luck")
+    channel ="#tutorial_"+json.loads(request.data['payload'])['user']['id']
+    slack_message = dict(text="Head over to <> Good luck")
 
     level = Level.objects.get(name='tutorial')
     new_slack_message = dict(
-        channel     = "#tutorial",
+       channel     = channel,
         text        = level.text,
         attachments = [dict(
             callback_id = "tutorial",
