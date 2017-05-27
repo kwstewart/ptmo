@@ -13,10 +13,16 @@ from slackclient import SlackClient
 
 from models import *
 
+class InitTutorialApi(APIView):
+
+    def post(self, request, *args, **kwargs):
+        slack_message = init_tutorial(request)
+        return Response(slack_message)
+
+
 class StartTutorialApi(APIView):
 
     def post(self, request, *args, **kwargs):
-
         slack_message = tutorial_intro()
         return Response(slack_message)
 
@@ -34,12 +40,46 @@ class SlackButtonApi(APIView):
             slack_message = load_room(payload, location, dest_room_name, curr_room_name)
         elif payload['actions'][0]['name'].startswith('item'):
             slack_message = open_item(payload)
+        elif payload['actions'][0]['name'].startswith('start'):
+            slack_message = tutorial_intro()
         elif payload['actions'][0]['name'].startswith('look'):
             slack_message = look(payload)
         else:
             slack_message = invalid_button(payload)
         return Response(slack_message)
 
+
+def init_tutorial(request):
+    import pdb; pdb.set_trace()
+    from psycopg2 import connect
+    from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+
+    db_settings = settings.DATABASES['default']
+
+    con = connect(user=db_settings['USER'], host = db_settings['HOST'], password=db_settings['PASSWORD'])
+    dbname = "{}_{}".format(db_settings['NAME'],request.data['user_id'])
+
+    con.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
+    cur = con.cursor()
+    cur.execute('CREATE DATABASE ' + dbname)
+    cur.close()
+    con.close()
+
+    slack_message = dict(
+        response_type   = "ephemeral",
+        text            = "Your level has been generated.",
+        attachments     = [dict(
+            callback_id = "tutorial",
+            actions     = [dict(
+                name    = "start__tutorial",
+                type    = "button",
+                text    = "Begin",
+                value   = "true"
+
+            )]
+        )]
+    )
+    return slack_message
 
 def tutorial_intro():
 
@@ -52,7 +92,7 @@ def tutorial_intro():
             actions = [dict(
                 name    = "room__tutorial_woods__blank__roadside",
                 type    = "button",
-                text    = "Start",
+                text    = "Let's go!",
                 value   = "true"
 
             )]
