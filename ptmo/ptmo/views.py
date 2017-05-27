@@ -33,11 +33,9 @@ class SlackWebhookApi(APIView):
         if 'challenge' in request.data:
             return Response(dict(challenge=request.data['challenge']))
         if 'type' in request.data:
-            import .webhooks
-            event_type = request.data['type']
-            if event_type in dir(webhooks):
-                return event_type(request.data)
-
+            import webhooks
+            if event_type == "team_join":
+                return webhooks.team_join(request.data)
 
         return Response(dict())
 
