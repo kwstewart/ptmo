@@ -313,7 +313,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         return slack_message
 
     else:
-        new_slack_message['attachments'].extend(hist)
+        new_slack_message['attachments'].extend(history)
         new_slack_message['attachments'].append(payload['original_message']['attachments'])
         return new_slack_message
 
