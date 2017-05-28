@@ -313,8 +313,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         return slack_message
 
     else:
-        for hist in history:
-            new_slack_message['attachments'].extend(hist)
+        new_slack_message['attachments'].extend(hist)
         new_slack_message['attachments'].append(payload['original_message']['attachments'])
         return new_slack_message
 
@@ -341,7 +340,7 @@ def look(payload):
         door.save()
         inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
 
-    payload['original_message']['attachments'].append(dict(text=" ", footer=inspect_text, mrkdwn_in=["text","footer"]))
+    payload['original_message']['attachments'].append(dict(text=" ", footer=inspect_text))
 
     return load_room(payload, location, room, history=strip_actions(payload['original_message']['attachments']), new_room=False)
 
