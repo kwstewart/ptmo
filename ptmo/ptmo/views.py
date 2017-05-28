@@ -153,7 +153,7 @@ def tutorial_intro(request):
     channel = UserPreference.objects.filter(user=user, key='tutorial_channel_id')[0].value
     
     # TODO: fix the channel link
-    slack_message = dict(text="Head over to <"+channel+"> Good luck")
+    slack_message = dict(text="Head over to <#"+channel+"> Good luck")
 
     db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
