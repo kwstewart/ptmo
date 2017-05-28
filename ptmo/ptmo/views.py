@@ -197,10 +197,13 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
 
     if not history and 'original_message' in payload:
         history = strip_actions(payload['original_message']['attachments'])
+    
+    db_config = settings.DATABASES['default']
+    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
 
-    cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
-
-    dr_q = Room.objects.filter(location__name=location, name=dest_room_name)
+    with in_database(db_config):
+        cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
+        dr_q = Room.objects.filter(location__name=location, name=dest_room_name)
 
     if not dr_q.exists():
         return invalid_button(payload)
@@ -216,10 +219,11 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         slack_message = tutorial_intro()
         slack_message['attachments'].append(dict(text=' ', footer='Good luck'))
     
-    d_q = Door.objects.filter(curr_room=dest_room)
-    ud_q = Door.objects.filter(curr_room=dest_room)
-    uri_q = RoomItem.objects.filter(room=dest_room)
-    iri_q = RoomItem.objects.filter(room=dest_room, inspected=True).exclude(button_text=None)
+    with in_database(db_config):
+        d_q = Door.objects.filter(curr_room=dest_room)
+        ud_q = Door.objects.filter(curr_room=dest_room)
+        uri_q = RoomItem.objects.filter(room=dest_room)
+        iri_q = RoomItem.objects.filter(room=dest_room, inspected=True).exclude(button_text=None)
 
     
     new_slack_message = dict(
@@ -319,13 +323,18 @@ def look(payload):
     room = room_parts[2]
     item = room_parts[3]
 
+    db_config = settings.DATABASES['default']
+    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+
     if action == "item":
-        room_item = RoomItem.objects.get(room__name=room, item__name=item)
+        with in_database(db_config):
+            room_item = RoomItem.objects.get(room__name=room, item__name=item)
         room_item.inspected = True
         room_item.save()
         inspect_text = "{}? - {}".format(room_item.item.name, room_item.item.inspect_text)
     elif action == "door":
-        door = Door.objects.get(curr_room__name=room, dest_room__name=item)
+        with in_database(db_config):
+            door = Door.objects.get(curr_room__name=room, dest_room__name=item)
         door.inspected = True
         door.save()
         inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
@@ -343,7 +352,11 @@ def open_item(payload):
     room = room_parts[2]
     target = room_parts[3]
 
-    room_item = RoomItem.objects.get(room__name=room, item__name=target)
+    db_config = settings.DATABASES['default']
+    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+
+    with in_database(db_config):
+        room_item = RoomItem.objects.get(room__name=room, item__name=target)
     
     payload['original_message']['attachments'].append(dict(text=" ",footer="Open {} - {}".format(room_item.item.name, room_item.force_text)))
     
