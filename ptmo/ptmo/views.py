@@ -205,7 +205,6 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
     with in_database(db_config):
-        cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
         dr_q = Room.objects.filter(location__name=location, name=dest_room_name)
 
     if not dr_q.exists():
@@ -330,14 +329,14 @@ def look(payload):
     if action == "item":
         with in_database(db_config):
             room_item = RoomItem.objects.get(room__name=room, item__name=item)
-        room_item.inspected = True
-        room_item.save()
+            room_item.inspected = True
+            room_item.save()
         inspect_text = "{}? - {}".format(room_item.item.name, room_item.item.inspect_text)
     elif action == "door":
         with in_database(db_config):
             door = Door.objects.get(curr_room__name=room, dest_room__name=item)
-        door.inspected = True
-        door.save()
+            door.inspected = True
+            door.save()
         inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
 
     payload['original_message']['attachments'].append(dict(text=" ", footer=inspect_text))
