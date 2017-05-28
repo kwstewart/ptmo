@@ -90,15 +90,15 @@ def init_tutorial(request):
     # Import the level
     f = open('tutorial.sql', 'r')
     subprocess.call(
-        '/usr/lib64/pgsql95/bin/psql -h {} --username={} {} < tutorial.sql'.format(
+        "export PGPASSWORD='{}' ; /usr/lib64/pgsql95/bin/psql -h {} --username={} {} < tutorial.sql".format(
+            db_settings['PASSWORD'], 
             db_settings['HOST'], 
             db_settings['USER'], 
-            dbname
+            dbname.lower()
         ),
         shell = True
     )
-    #cur.copy_from(f, temp_unicommerce_status, sep=',')
-    #f.close()
+    f.close()
 
     cur.close()
     con.close()
