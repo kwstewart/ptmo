@@ -65,6 +65,7 @@ class SlackButtonApi(APIView):
 
 
 def init_tutorial(request):
+    import subprocess
     from psycopg2 import connect
     from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
@@ -87,14 +88,21 @@ def init_tutorial(request):
         cur.execute('CREATE DATABASE ' + dbname)
     
     # Import the level
-    #f = open(r'C:\Users\n\Desktop\data.csv', 'r')
+    f = open('tutorial.sql', 'r')
+    subprocess.call(
+        '/usr/lib64/pgsql95/bin/psql -h {} --username={} {} < tutorial.sql'.format(
+            db_settings['HOST'], 
+            db_settings['USER'], 
+            dbname
+        ),
+        shell = True
+    )
     #cur.copy_from(f, temp_unicommerce_status, sep=',')
     #f.close()
 
     cur.close()
     con.close()
     
-    # Only run this if the user doesn't already have a channel
     user = UserPreference.objects.get(key='slack_user_id', value=request.data['user_id']).user
     up_q = UserPreference.objects.filter(user=user, key='tutorial_channel_id')
     if up_q.exists():
@@ -148,7 +156,7 @@ def tutorial_intro(request):
 
     with in_database(db_config):
         level = Level.objects.get(name='tutorial')
-        
+
     new_slack_message = dict(
        channel     = channel,
         text        = level.text,
