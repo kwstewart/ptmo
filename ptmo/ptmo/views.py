@@ -63,6 +63,10 @@ class SlackButtonApi(APIView):
             slack_message = invalid_button(payload)
         return Response(slack_message)
 
+def set_dynamic_db_config(user_id):
+    db_config = dict(settings.DATABASES['default'])
+    db_config['NAME'] = "ptmo_"+user_id
+    return db_config
 
 def init_tutorial(request):
     import subprocess
@@ -145,14 +149,13 @@ def init_tutorial(request):
 def tutorial_intro(request):
 
     payload = json.loads(request.data['payload'])
-    channel ="#tutorial_"+payload['user']['id']
-
+    user = UserPreference.objects.filter(key='slack_user_id', value=payload['user']['id'])[0].user
+    channel = UserPreference.objects.filter(user=user, key='tutorial_channel_id')[0].value
+    
     # TODO: fix the channel link
-    slack_message = dict(text="Head over to <> Good luck")
+    slack_message = dict(text="Head over to <"+channel+"> Good luck")
 
-    # TODO: Make this a function
-    db_config = settings.DATABASES['default']
-    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+    db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
     with in_database(db_config):
         level = Level.objects.get(name='tutorial')
@@ -199,8 +202,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     if not history and 'original_message' in payload:
         history = strip_actions(payload['original_message']['attachments'])
     
-    db_config = settings.DATABASES['default']
-    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+    db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
     with in_database(db_config):
         cr_q = Room.objects.filter(location__name=location, name=curr_room_name)
@@ -324,8 +326,7 @@ def look(payload):
     room = room_parts[2]
     item = room_parts[3]
 
-    db_config = settings.DATABASES['default']
-    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+    db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
     if action == "item":
         with in_database(db_config):
@@ -353,8 +354,7 @@ def open_item(payload):
     room = room_parts[2]
     target = room_parts[3]
 
-    db_config = settings.DATABASES['default']
-    db_config['NAME'] = "ptmo_"+payload['user']['id'].lower()
+    db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
     with in_database(db_config):
         room_item = RoomItem.objects.get(room__name=room, item__name=target)
