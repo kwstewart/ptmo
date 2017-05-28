@@ -125,6 +125,7 @@ def init_tutorial(request):
         )
 
         resp = sca.api_call("groups.invite",name=channel, user=settings.BOT_SLACK_USER_ID)            
+        resp = sca.api_call("groups.invite",name=channel, user=request.data['user_id'])            
 
     slack_message = dict(
         response_type   = "ephemeral",
