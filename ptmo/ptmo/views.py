@@ -161,6 +161,7 @@ def tutorial_intro(request):
        channel     = channel,
         text        = level.text,
         attachments = [dict(
+            text        = " ",
             callback_id = "tutorial",
             actions = [dict(
                 name    = "room__tutorial_woods__blank__roadside",
