@@ -160,21 +160,21 @@ def tutorial_intro(request):
     with in_database(db_config):
         level = Level.objects.get(name='tutorial')
 
-    new_slack_message = dict(
-       channel     = channel,
-        text        = level.text,
-        attachments = [dict(
-            text        = " ",
-            callback_id = "tutorial",
-            actions = [dict(
-                name    = "room__tutorial_woods__blank__roadside",
-                type    = "button",
-                text    = "Let's go!",
-                value   = "true"
+        new_slack_message = dict(
+           channel     = channel,
+            text        = level.text,
+            attachments = [dict(
+                text        = " ",
+                callback_id = "tutorial",
+                actions = [dict(
+                    name    = "room__tutorial_woods__blank__roadside",
+                    type    = "button",
+                    text    = "Let's go!",
+                    value   = "true"
 
+                )]
             )]
-        )]
-    )
+        )
     sc = SlackClient(settings.BOT_TOKEN)
     sc.api_call("chat.postMessage",**new_slack_message)
     return slack_message
@@ -207,104 +207,103 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     with in_database(db_config):
         dr_q = Room.objects.filter(location__name=location, name=dest_room_name)
 
-    if not dr_q.exists():
-        return invalid_button(payload)
+        if not dr_q.exists():
+            return invalid_button(payload)
 
-    dest_room = dr_q[0]
+        dest_room = dr_q[0]
 
-    
-    if 'original_message' in payload:
-        slack_message = payload['original_message']
-        slack_message['attachments'] = strip_actions(payload['original_message']['attachments'])
-        slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
-    else:
-        slack_message = tutorial_intro()
-        slack_message['attachments'].append(dict(text=' ', footer='Good luck'))
-    
-    with in_database(db_config):
+        
+        if 'original_message' in payload:
+            slack_message = payload['original_message']
+            slack_message['attachments'] = strip_actions(payload['original_message']['attachments'])
+            slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
+        else:
+            slack_message = tutorial_intro()
+            slack_message['attachments'].append(dict(text=' ', footer='Good luck'))
+        
         d_q = Door.objects.filter(curr_room=dest_room)
         ud_q = Door.objects.filter(curr_room=dest_room)
         uri_q = RoomItem.objects.filter(room=dest_room)
         iri_q = RoomItem.objects.filter(room=dest_room, inspected=True).exclude(button_text=None)
 
-    
-    new_slack_message = dict(
-        channel     = payload['channel']['id'],
-        text        = dest_room.text,
-        attachments =[
-            dict(
-                title       = "Investigate",
-                callback_id = "slack_user_id",
-                actions     = [
-                    dict(
-                        name    = "look__{}__{}".format(location, dest_room),
-                        type    = "select",
-                        options = []
-                    )
-                ]
-            ),
-            dict(
-                title       = "Act",
-                callback_id = "slack_user_id",
-                actions     = []
+        
+        new_slack_message = dict(
+            channel     = payload['channel']['id'],
+            text        = dest_room.text,
+            attachments =[
+                dict(
+                    title       = "Investigate",
+                    callback_id = "slack_user_id",
+                    actions     = [
+                        dict(
+                            name    = "look__{}__{}".format(location, dest_room),
+                            type    = "select",
+                            options = []
+                        )
+                    ]
+                ),
+                dict(
+                    title       = "Act",
+                    callback_id = "slack_user_id",
+                    actions     = []
+                )
+            ]
+        )
+
+        # TODO: Combine these into 1 array so we can alphabetize
+        for room_item in uri_q:
+            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
+            item_dict = dict(
+                text    = room_item.item.name,
+                value   = item_name
             )
-        ]
-    )
+            new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
 
-    # TODO: Combine these into 1 array so we can alphabetize
-    for room_item in uri_q:
-        item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
-        item_dict = dict(
-            text    = room_item.item.name,
-            value   = item_name
-        )
-        new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
-
-    for door in ud_q:
-        door_name = "door__{}__{}__{}".format(location, dest_room, door.dest_room.name)
-        item_dict = dict(
-            text    = door.button_text,
-            value   = door_name
-        )
-        new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
-
-    # TODO: Combine these into 1 array so we can alphabetize
-    for door in d_q:
-        door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
-        door_dict = dict(
-            name    = door_name,
-            type    = "button",
-            text    = door.button_text,
-            value   = True
-        )
-        if door.locked and door.attempted:
-            door_dict['style'] = 'danger'
-            door_dict['confirm'] = dict(
-                title           = "You can't do that",
-                text            = door.lock_text,
-                ok_text         = "Try again",
-                dismiss_text    = "Got it"
+        for door in ud_q:
+            door_name = "door__{}__{}__{}".format(location, dest_room, door.dest_room.name)
+            item_dict = dict(
+                text    = door.button_text,
+                value   = door_name
             )
-        new_slack_message['attachments'][1]['actions'].append(door_dict)
+            new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
 
-    for room_item in iri_q:
-        item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
-        item_dict = dict(
-            name    = item_name,
-            type    = "button",
-            text    = room_item.button_text,
-            value   = True
-        )
-
-        if room_item.locked and room_item.inspected:
-            item_dict['style'] = 'danger'
-            item_dict['confirm'] = dict(
-                title           = "You can't do that",
-                text            = room_item.lock_text,
-                ok_text         = "Try again",
-                dismiss_text    = "Got it"
+        # TODO: Combine these into 1 array so we can alphabetize
+        for door in d_q:
+            door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
+            door_dict = dict(
+                name    = door_name,
+                type    = "button",
+                text    = door.button_text,
+                value   = True
             )
-        new_slack_message['attachments'][1]['actions'].append(item_dict)
+            if door.locked and door.attempted:
+                door_dict['style'] = 'danger'
+                door_dict['confirm'] = dict(
+                    title           = "You can't do that",
+                    text            = door.lock_text,
+                    ok_text         = "Try again",
+                    dismiss_text    = "Got it"
+                )
+            new_slack_message['attachments'][1]['actions'].append(door_dict)
+
+        for room_item in iri_q:
+            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
+            item_dict = dict(
+                name    = item_name,
+                type    = "button",
+                text    = room_item.button_text,
+                value   = True
+            )
+
+            if room_item.locked and room_item.inspected:
+                item_dict['style'] = 'danger'
+                item_dict['confirm'] = dict(
+                    title           = "You can't do that",
+                    text            = room_item.lock_text,
+                    ok_text         = "Try again",
+                    dismiss_text    = "Got it"
+                )
+            new_slack_message['attachments'][1]['actions'].append(item_dict)
 
     if new_room:
         sc = SlackClient(settings.BOT_TOKEN)
@@ -325,15 +324,13 @@ def look(payload):
     item = room_parts[3]
 
     db_config = set_dynamic_db_config(payload['user']['id'].lower())
-
-    if action == "item":
-        with in_database(db_config):
+    with in_database(db_config, write=True):
+        if action == "item":
             room_item = RoomItem.objects.get(room__name=room, item__name=item)
             room_item.inspected = True
             room_item.save()
         inspect_text = "{}? - {}".format(room_item.item.name, room_item.item.inspect_text)
-    elif action == "door":
-        with in_database(db_config):
+        elif action == "door":
             door = Door.objects.get(curr_room__name=room, dest_room__name=item)
             door.inspected = True
             door.save()
