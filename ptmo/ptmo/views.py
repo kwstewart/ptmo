@@ -231,11 +231,12 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     
         new_slack_message = dict(
             channel     = payload['channel']['id'],
-            text        = dest_room.text,
+            text        = "*{}*\n{}".format(dest_room.clean_name,dest_room.text),
             attachments =[
                 dict(
                     title       = "Investigate",
                     callback_id = "slack_user_id",
+                    color       = "#66c2ff",
                     actions     = [
                         dict(
                             name    = "look__{}__{}".format(location, dest_room),
@@ -246,6 +247,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                 ),
                 dict(
                     title       = "Act",
+                    color       = "#33cc33",
                     callback_id = "slack_user_id",
                     actions     = []
                 )
