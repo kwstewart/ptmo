@@ -257,7 +257,6 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             )
 
         new_slack_message['attachments'].append(
-
             dict(
                 title       = "Investigate",
                 callback_id = "slack_user_id",
@@ -269,7 +268,9 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                         options = []
                     )
                 ]
-            ),
+            )
+        )
+        new_slack_message['attachments'].append(
             dict(
                 title       = "Act",
                 color       = "#33cc33",
