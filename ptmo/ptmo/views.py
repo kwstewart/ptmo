@@ -249,10 +249,11 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             investigate_index = 1
             action_index = 2
             new_slack_message['attachments'].append(
-            dict(
-                text            = dest_room.text,
-                callback_id     = "no_history",
-                thumb_url       = dest_room.image
+                dict(
+                    text            = dest_room.text,
+                    callback_id     = "no_history",
+                    thumb_url       = dest_room.image
+                )
             )
 
         new_slack_message['attachments'].append(
