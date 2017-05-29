@@ -377,7 +377,7 @@ def open_item(payload):
     with in_database(db_config):
         room_item = RoomItem.objects.get(room__name=room, item__name=target)
     
-    if room_item.item.locked:
+    if room_item.locked:
         payload['original_message']['attachments'].append(
             dict(
                 text    = "[:no_entry_sign: *Open {}* ] - :no_entry: {}".format(room_item.item.clean_name, room_item.force_text),
