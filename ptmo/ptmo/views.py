@@ -220,7 +220,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         slack_message['attachments'].append(
             dict(
                 text    = " ",
-                color   = "#ebfaeb",
+                color   = "#d6f5d6",
                 footer  = "GO -> " + dest_room.clean_name
             )
         )
