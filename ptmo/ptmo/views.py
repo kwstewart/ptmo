@@ -245,16 +245,16 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             attachments =[]
         )
 
+        investigate_index = 1
+        action_index = 2
+
+        text_dict = dict(
+            text            = dest_room.text,
+            callback_id     = "no_history",
+        )
         if dest_room.image:
-            investigate_index = 1
-            action_index = 2
-            new_slack_message['attachments'].append(
-                dict(
-                    text            = dest_room.text,
-                    callback_id     = "no_history",
-                    thumb_url       = dest_room.image
-                )
-            )
+            text_dict['url'] = dest_room.image
+        new_slack_message['attachments'].append(text_dict)
 
         new_slack_message['attachments'].append(
             dict(
