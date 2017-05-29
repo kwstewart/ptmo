@@ -237,7 +237,12 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     
         new_slack_message = dict(
             channel     = payload['channel']['id'],
-            text        = "*{}*\n{}".format(dest_room.clean_name,dest_room.text),
+            text        = "~{border}~{line_break}*{title}*{line_break}~{border}~{line_break}{text}".format(
+                title       = dest_room.clean_name, 
+                border      = "-" * 40, 
+                text        = dest_room.text, 
+                line_break  = "\n"
+            )
             attachments =[
                 dict(
                     title       = "Investigate",
