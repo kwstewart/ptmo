@@ -41,6 +41,7 @@ class Room(models.Model):
     name        = models.CharField(max_length=64)
     clean_name  = models.CharField(max_length=64, blank=True, null=True)
     text        = models.TextField()
+    image       = models.CharField(max_length=255, null=True, blank=True)
     
     class Meta:
         verbose_name        = "Room"

@@ -237,32 +237,44 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     
         new_slack_message = dict(
             channel     = payload['channel']['id'],
-            text        = "~{border}~{line_break}*{title}*{line_break}~{border}~{line_break}{text}".format(
+            text        = "~{border}~{line_break}*{title}*{line_break}~{border}~".format(
                 title       = dest_room.clean_name, 
                 border      = "-" * 40, 
-                text        = dest_room.text, 
                 line_break  = "\n"
             ),
-            attachments =[
-                dict(
-                    title       = "Investigate",
-                    callback_id = "slack_user_id",
-                    color       = "#66c2ff",
-                    actions     = [
-                        dict(
-                            name    = "look__{}__{}".format(location, dest_room),
-                            type    = "select",
-                            options = []
-                        )
-                    ]
-                ),
-                dict(
-                    title       = "Act",
-                    color       = "#33cc33",
-                    callback_id = "slack_user_id",
-                    actions     = []
-                )
-            ]
+            attachments =[]
+        )
+
+        if dest_room.image:
+            investigate_index = 1
+            action_index = 2
+            new_slack_message['attachments'].append(
+            dict(
+                text            = dest_room.text,
+                callback_id     = "no_history",
+                thumb_url       = dest_room.image
+            )
+
+        new_slack_message['attachments'].append(
+
+            dict(
+                title       = "Investigate",
+                callback_id = "slack_user_id",
+                color       = "#66c2ff",
+                actions     = [
+                    dict(
+                        name    = "look__{}__{}".format(location, dest_room),
+                        type    = "select",
+                        options = []
+                    )
+                ]
+            ),
+            dict(
+                title       = "Act",
+                color       = "#33cc33",
+                callback_id = "slack_user_id",
+                actions     = []
+            )            
         )
 
         # TODO: Combine these into 1 array so we can alphabetize
@@ -272,7 +284,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                 text    = room_item.item.clean_name,
                 value   = item_name
             )
-            new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
+            new_slack_message['attachments'][investigate_index]['actions'][0]['options'].append(item_dict)
 
         for door in ud_q:
             door_name = "door__{}__{}__{}".format(location, dest_room, door.dest_room.name)
@@ -280,7 +292,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                 text    = door.button_text,
                 value   = door_name
             )
-            new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
+            new_slack_message['attachments'][investigate_index]['actions'][0]['options'].append(item_dict)
 
         # TODO: Combine these into 1 array so we can alphabetize
         for door in d_q:
@@ -299,7 +311,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                     ok_text         = "Try again",
                     dismiss_text    = "Got it"
                 )
-            new_slack_message['attachments'][1]['actions'].append(door_dict)
+            new_slack_message['attachments'][action_index]['actions'].append(door_dict)
 
         for room_item in iri_q:
             item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
@@ -318,7 +330,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                     ok_text         = "Try again",
                     dismiss_text    = "Got it"
                 )
-            new_slack_message['attachments'][1]['actions'].append(item_dict)
+            new_slack_message['attachments'][action_index]['actions'].append(item_dict)
 
     if new_room:
         sc = SlackClient(settings.BOT_TOKEN)
