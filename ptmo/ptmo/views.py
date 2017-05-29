@@ -219,9 +219,9 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         slack_message['attachments'] = strip_actions(payload['original_message']['attachments'])
         slack_message['attachments'].append(
             dict(
-                text    = " ",
-                color   = "#d6f5d6",
-                footer  = "GO -> " + dest_room.clean_name
+                text        = "[:walking: *{}* ] ".format(dest_room.clean_name),
+                color       = "#d6f5d6",
+                mrkdwn_in   = ['text']
             )
         )
     else:
@@ -242,7 +242,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                 border      = "-" * 40, 
                 text        = dest_room.text, 
                 line_break  = "\n"
-            )
+            ),
             attachments =[
                 dict(
                     title       = "Investigate",
@@ -345,19 +345,19 @@ def look(payload):
             room_item = RoomItem.objects.get(room__name=room, item__name=item)
             room_item.inspected = True
             room_item.save()
-        inspect_text = "{}? - {}".format(room_item.item.clean_name, room_item.item.inspect_text)
+        inspect_text = "[:eye: *{}* ] - {}".format(room_item.item.clean_name, room_item.item.inspect_text)
     elif action == "door":
         with in_database(db_config, write=True):
             door = Door.objects.get(curr_room__name=room, dest_room__name=item)
             door.inspected = True
             door.save()
-        inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
+        inspect_text = "[:eye: *{}* ] - {}".format(door.button_text, door.inspect_text)
 
     payload['original_message']['attachments'].append(
         dict(
-            text    = " ", 
-            color   = "#ccebff",
-            footer  = inspect_text
+            text        = inspect_text, 
+            color       = "#ccebff",
+            mrkdwn_in   = ['text']
         )
     )
 
@@ -377,12 +377,12 @@ def open_item(payload):
     with in_database(db_config):
         room_item = RoomItem.objects.get(room__name=room, item__name=target)
     
-    payload['original_message']['attachments'].append(
-        dict(
-            text    = " ",
-            footer  = "Open {} - {}".format(room_item.item.clean_name, room_item.force_text),
-            color   = "#ff9999"
+    if room_item.item.locked:
+        payload['original_message']['attachments'].append(
+            dict(
+                text    = "[:no_entry_sign: *Open {}* ] - :no_entry: {}".format(room_item.item.clean_name, room_item.force_text),
+                color   = "#ff9999"
+            )
         )
-    )
     
     return load_room(payload, location, room, history=strip_actions(payload['original_message']['attachments']), new_room=False)
