@@ -188,11 +188,14 @@ def invalid_button(payload):
     )
     return slack_message
 
-def strip_actions(attachments):
+def strip_actions(attachments, keep_text = False):
     stripped = []
     for attachment in attachments:
         if 'callback_id' in attachment:
-            continue
+            if keep_text and attachment['callback_id'] == 'keep_text':
+                pass
+            else:
+                continue
         stripped.append(attachment)
 
     return stripped
@@ -216,7 +219,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     
     if 'original_message' in payload:
         slack_message = payload['original_message']
-        slack_message['attachments'] = strip_actions(payload['original_message']['attachments'])
+        slack_message['attachments'] = strip_actions(payload['original_message']['attachments'], keep_text=True)
         slack_message['attachments'].append(
             dict(
                 text        = "[:walking: *{}* ] ".format(dest_room.clean_name),
@@ -250,6 +253,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
 
         text_dict = dict(
             text            = dest_room.text,
+            callback_id     = "keep_text"
         )
         if dest_room.image:
             text_dict['thumb_url'] = dest_room.image
