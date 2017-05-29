@@ -380,8 +380,9 @@ def open_item(payload):
     if room_item.locked:
         payload['original_message']['attachments'].append(
             dict(
-                text    = "[:no_entry_sign: *Open {}* ] - :no_entry: {}".format(room_item.item.clean_name, room_item.force_text),
-                color   = "#ff9999"
+                text        = "[:no_entry_sign: *Open {}* ] - {}".format(room_item.item.clean_name, room_item.force_text),
+                color       = "#ff9999",
+                mrkdwn_in   = ['text']
             )
         )
     
