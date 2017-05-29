@@ -250,7 +250,6 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
 
         text_dict = dict(
             text            = dest_room.text,
-            callback_id     = "no_history",
         )
         if dest_room.image:
             text_dict['thumb_url'] = dest_room.image
