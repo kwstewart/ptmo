@@ -256,7 +256,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
 
         # TODO: Combine these into 1 array so we can alphabetize
         for room_item in uri_q:
-            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.clean_name)
+            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
             item_dict = dict(
                 text    = room_item.item.clean_name,
                 value   = item_name
@@ -291,7 +291,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             new_slack_message['attachments'][1]['actions'].append(door_dict)
 
         for room_item in iri_q:
-            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.clean_name)
+            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
             item_dict = dict(
                 name    = item_name,
                 type    = "button",
