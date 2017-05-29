@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# https://stackoverflow.com/questions/27401779/dynamically-set-database-based-on-request-in-django
 class UserPreference(models.Model):
     user    = models.ForeignKey(User)
     key     = models.CharField(max_length=255)
@@ -70,6 +69,7 @@ class Door(models.Model):
 
 class Item(models.Model):
     name            = models.CharField(max_length=16)
+    clean_name      = models.CharField(max_length=64, default="")
     inspect_text    = models.TextField()
     obtainable      = models.BooleanField(default=False)
 

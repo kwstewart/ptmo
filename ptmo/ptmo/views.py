@@ -256,9 +256,9 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
 
         # TODO: Combine these into 1 array so we can alphabetize
         for room_item in uri_q:
-            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
+            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.clean_name)
             item_dict = dict(
-                text    = room_item.item.name,
+                text    = room_item.item.clean_name,
                 value   = item_name
             )
             new_slack_message['attachments'][0]['actions'][0]['options'].append(item_dict)
@@ -291,7 +291,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             new_slack_message['attachments'][1]['actions'].append(door_dict)
 
         for room_item in iri_q:
-            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)
+            item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.clean_name)
             item_dict = dict(
                 name    = item_name,
                 type    = "button",
@@ -334,7 +334,7 @@ def look(payload):
             room_item = RoomItem.objects.get(room__name=room, item__name=item)
             room_item.inspected = True
             room_item.save()
-        inspect_text = "{}? - {}".format(room_item.item.name, room_item.item.inspect_text)
+        inspect_text = "{}? - {}".format(room_item.item.clean_name, room_item.item.inspect_text)
     elif action == "door":
         with in_database(db_config, write=True):
             door = Door.objects.get(curr_room__name=room, dest_room__name=item)
@@ -360,6 +360,12 @@ def open_item(payload):
     with in_database(db_config):
         room_item = RoomItem.objects.get(room__name=room, item__name=target)
     
-    payload['original_message']['attachments'].append(dict(text=" ",footer="Open {} - {}".format(room_item.item.name, room_item.force_text)))
+    payload['original_message']['attachments'].append(
+        dict(
+            text    = " ",
+            footer  = "Open {} - {}".format(room_item.item.clean_name, room_item.force_text),
+            color   = "#ff9999"
+        )
+    )
     
     return load_room(payload, location, room, history=strip_actions(payload['original_message']['attachments']), new_room=False)
