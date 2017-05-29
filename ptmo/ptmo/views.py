@@ -217,7 +217,13 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     if 'original_message' in payload:
         slack_message = payload['original_message']
         slack_message['attachments'] = strip_actions(payload['original_message']['attachments'])
-        slack_message['attachments'].append(dict(text=" ",footer="GO -> "+dest_room.clean_name))
+        slack_message['attachments'].append(
+            dict(
+                text    = " ",
+                color   = "#ebfaeb",
+                footer  = "GO -> " + dest_room.clean_name
+            )
+        )
     else:
         slack_message = tutorial_intro()
         slack_message['attachments'].append(dict(text=' ', footer='Good luck'))
@@ -342,7 +348,13 @@ def look(payload):
             door.save()
         inspect_text = "{}? - {}".format(door.button_text, door.inspect_text)
 
-    payload['original_message']['attachments'].append(dict(text=" ", footer=inspect_text))
+    payload['original_message']['attachments'].append(
+        dict(
+            text    = " ", 
+            color   = "#ccebff",
+            footer  = inspect_text
+        )
+    )
 
     return load_room(payload, location, room, history=strip_actions(payload['original_message']['attachments']), new_room=False)
 
