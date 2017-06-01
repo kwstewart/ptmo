@@ -223,6 +223,8 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             if door_q.exists():
                 curr_door = door_q[0]
                 if curr_door.locked:
+                    curr_door.attempted = True
+                    curr_door.save()
                     history.append(
                         dict(
                             text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.button_text),
