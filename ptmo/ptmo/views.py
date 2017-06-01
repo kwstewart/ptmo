@@ -218,17 +218,20 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         dest_room = dr_q[0]
 
         if curr_room_name:
-            curr_door = Door.objects.filter(curr_room__name=curr_room_name, dest_room=dest_room)
-            if curr_door.locked:
-                history.append(
-                    dict(
-                        text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.button_text),
-                        color       = "#ff9999",
-                        mrkdwn_in   = ['text']
+
+            door_q = Door.objects.filter(curr_room__name=curr_room_name, dest_room=dest_room)
+            if door_q.exists():
+                curr_door = door_q[0]
+                if curr_door.locked:
+                    history.append(
+                        dict(
+                            text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.button_text),
+                            color       = "#ff9999",
+                            mrkdwn_in   = ['text']
+                        )
                     )
-                )
-            
-                return load_room(payload, location, curr_room_name, history=history, new_room=False)                
+                
+                    return load_room(payload, location, curr_room_name, history=history, new_room=False)                
 
     
     if 'original_message' in payload:
