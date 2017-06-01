@@ -208,7 +208,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
     
     db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
-    with in_database(db_config):
+    with in_database(db_config, write=True):
 
         dr_q = Room.objects.filter(location__name=location, name=dest_room_name)
 
