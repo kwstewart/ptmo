@@ -223,15 +223,25 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             if door_q.exists():
                 curr_door = door_q[0]
                 if curr_door.locked:
-                    curr_door.attempted = True
-                    curr_door.save()
-                    history.append(
-                        dict(
-                            text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.button_text),
-                            color       = "#ff9999",
-                            mrkdwn_in   = ['text']
+                    if curr_door.attempted:
+                        history.append(
+                            dict(
+                                text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.lock_text),
+                                color       = "#ff9999",
+                                mrkdwn_in   = ['text']
+                            )
                         )
-                    )
+
+                    else:
+                        curr_door.attempted = True
+                        curr_door.save()
+                        history.append(
+                            dict(
+                                text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.button_text),
+                                color       = "#ff9999",
+                                mrkdwn_in   = ['text']
+                            )
+                        )
                 
                     return load_room(payload, location, curr_room_name, history=history, new_room=False)                
 
@@ -250,7 +260,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
         slack_message = tutorial_intro()
         slack_message['attachments'].append(dict(text=' ', footer='Good luck'))
     
-    with in_database(db_config):
+    with in_database(db_config, write=True):
         d_q = Door.objects.filter(curr_room=dest_room)
         ud_q = Door.objects.filter(curr_room=dest_room)
         uri_q = RoomItem.objects.filter(room=dest_room)
