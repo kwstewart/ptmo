@@ -226,7 +226,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                     if curr_door.attempted:
                         history.append(
                             dict(
-                                text        = "[:no_entry_sign: *Open {}* ] - Locked".format(curr_door.lock_text),
+                                text        = "[:no_entry_sign: *Open {}* ] - {}".format(curr_door.button_text, curr_door.lock_text),
                                 color       = "#ff9999",
                                 mrkdwn_in   = ['text']
                             )
