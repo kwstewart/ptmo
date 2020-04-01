@@ -1,0 +1,5369 @@
+[{
+		"model": "core.sourcerole",
+		"pk": 1,
+		"fields": {
+			"name": "Source Admin"
+		}
+	}, {
+		"model": "core.sourcerole",
+		"pk": 2,
+		"fields": {
+			"name": "Source User"
+		}
+	}, {
+		"model": "core.sourcerole",
+		"pk": 3,
+		"fields": {
+			"name": "Guest"
+		}
+	}, {
+		"model": "core.sourceuser",
+		"pk": 1,
+		"fields": {
+			"password": "pbkdf2_sha256$100000$BCeR2lWEwrRL$U9vCHApA7LByUDSHOOoOyq8Du4RCDAAqi6j8EQhezac=",
+			"last_login": "2018-05-26T17:24:14.525Z",
+			"is_superuser": true,
+			"first_name": "",
+			"last_name": "",
+			"is_staff": true,
+			"is_active": true,
+			"date_joined": "2018-05-26T17:23:59.187Z",
+			"role": 1,
+			"display_name": null,
+			"avatar": "",
+			"avatar_path": null,
+			"background_image": "",
+			"verified": false,
+			"locked": false,
+			"approved": false,
+			"status": "active",
+			"location": null,
+			"default_language": "en",
+			"timezone": "UTC",
+			"datetime_format": "%Y-%m-%d",
+			"hour_format": "12h",
+			"phone_number": null,
+			"account_status": null,
+			"expiry_date": null,
+			"created_at": "2018-05-26T17:23:59.312Z",
+			"updated_at": "2018-05-26T17:23:59.312Z",
+			"email": "keith@giantsource.com",
+			"username": null,
+			"user_permissions": [],
+			"groups": []
+		}
+	},
+	{
+		"model": "myfarog.battle",
+		"pk": 1,
+		"fields": {
+			"name": "Duel test 1",
+			"active": true,
+			"parties": [1, 2]
+		}
+	},
+	{
+		"model": "myfarog.itemmaterial",
+		"pk": 1,
+		"fields": {
+			"name": "Aurichalcum"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 2,
+		"fields": {
+			"name": "Bronze"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 3,
+		"fields": {
+			"name": "Copper"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 4,
+		"fields": {
+			"name": "Cotton"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 5,
+		"fields": {
+			"name": "Gold"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 6,
+		"fields": {
+			"name": "Electrum"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 7,
+		"fields": {
+			"name": "Silver"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 8,
+		"fields": {
+			"name": "Fur"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 9,
+		"fields": {
+			"name": "Wool"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 10,
+		"fields": {
+			"name": "Steel"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 11,
+		"fields": {
+			"name": "Iron"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 12,
+		"fields": {
+			"name": "Wood"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 13,
+		"fields": {
+			"name": "Leather"
+		}
+	}, {
+		"model": "myfarog.itemmaterial",
+		"pk": 14,
+		"fields": {
+			"name": "Flesh"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 1,
+		"fields": {
+			"name": "CHA"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 2,
+		"fields": {
+			"name": "CON"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 3,
+		"fields": {
+			"name": "DEX"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 4,
+		"fields": {
+			"name": "INT"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 5,
+		"fields": {
+			"name": "STR"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 6,
+		"fields": {
+			"name": "WIL"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 7,
+		"fields": {
+			"name": "_cha"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 8,
+		"fields": {
+			"name": "_con"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 9,
+		"fields": {
+			"name": "_dex"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 10,
+		"fields": {
+			"name": "_int"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 11,
+		"fields": {
+			"name": "_str"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 12,
+		"fields": {
+			"name": "_wil"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 13,
+		"fields": {
+			"name": "max_HP"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 14,
+		"fields": {
+			"name": "max_SP"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 15,
+		"fields": {
+			"name": "max_MHP"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 16,
+		"fields": {
+			"name": "Acrobatics"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 17,
+		"fields": {
+			"name": "Acting"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 18,
+		"fields": {
+			"name": "Alchemy"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 19,
+		"fields": {
+			"name": "Climbing"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 20,
+		"fields": {
+			"name": "Crafts"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 21,
+		"fields": {
+			"name": "Dancing"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 22,
+		"fields": {
+			"name": "Dodging"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 23,
+		"fields": {
+			"name": "Flute Playing"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 24,
+		"fields": {
+			"name": "Foraging"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 25,
+		"fields": {
+			"name": "Fortitude"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 26,
+		"fields": {
+			"name": "Healing"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 27,
+		"fields": {
+			"name": "Lyre Playing"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 28,
+		"fields": {
+			"name": "Mechanics"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 29,
+		"fields": {
+			"name": "Melee"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 30,
+		"fields": {
+			"name": "Missile"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 31,
+		"fields": {
+			"name": "Navigation"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 32,
+		"fields": {
+			"name": "Perception"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 33,
+		"fields": {
+			"name": "Poetry"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 34,
+		"fields": {
+			"name": "Religious Tradition"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 35,
+		"fields": {
+			"name": "Riding"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 36,
+		"fields": {
+			"name": "Rune Lore"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 37,
+		"fields": {
+			"name": "Singing"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 38,
+		"fields": {
+			"name": "Social Skills"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 39,
+		"fields": {
+			"name": "Stamina"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 40,
+		"fields": {
+			"name": "Stealth"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 41,
+		"fields": {
+			"name": "Swimming"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 42,
+		"fields": {
+			"name": "Tempo"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 43,
+		"fields": {
+			"name": "Tracking"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 44,
+		"fields": {
+			"name": "Trickery"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 45,
+		"fields": {
+			"name": "World Lore"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 46,
+		"fields": {
+			"name": "Seamanship"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 47,
+		"fields": {
+			"name": "Computers"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 48,
+		"fields": {
+			"name": "Driving"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 49,
+		"fields": {
+			"name": "Science"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 50,
+		"fields": {
+			"name": "Alarm Bell"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 51,
+		"fields": {
+			"name": "Awakening"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 52,
+		"fields": {
+			"name": "Bear Hug"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 53,
+		"fields": {
+			"name": "Calm Creature"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 54,
+		"fields": {
+			"name": "Charm"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 55,
+		"fields": {
+			"name": "Clairvoyance"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 56,
+		"fields": {
+			"name": "Conscience"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 57,
+		"fields": {
+			"name": "Courage"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 58,
+		"fields": {
+			"name": "Create Hulda"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 59,
+		"fields": {
+			"name": "Creatue Stone Guardian"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 60,
+		"fields": {
+			"name": "Create Nar"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 61,
+		"fields": {
+			"name": "Create Wight"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 62,
+		"fields": {
+			"name": "Cure Malaria"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 63,
+		"fields": {
+			"name": "Cure Trama"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 64,
+		"fields": {
+			"name": "Curse"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 65,
+		"fields": {
+			"name": "Disclose Observation"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 66,
+		"fields": {
+			"name": "Discover Posion"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 67,
+		"fields": {
+			"name": "Dispel"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 68,
+		"fields": {
+			"name": "Divine Language"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 69,
+		"fields": {
+			"name": "Divine Senses"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 70,
+		"fields": {
+			"name": "Eternal Flame"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 71,
+		"fields": {
+			"name": "Ettin Eyes"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 72,
+		"fields": {
+			"name": "False Sound"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 73,
+		"fields": {
+			"name": "Fear"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 74,
+		"fields": {
+			"name": "Fireball"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 75,
+		"fields": {
+			"name": "Fire Bolt"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 76,
+		"fields": {
+			"name": "Flight"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 77,
+		"fields": {
+			"name": "Fog"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 78,
+		"fields": {
+			"name": "Fruit of Nature"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 79,
+		"fields": {
+			"name": "Fulgjon"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 80,
+		"fields": {
+			"name": "Fumble-Foe"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 81,
+		"fields": {
+			"name": "Ghost Feet"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 82,
+		"fields": {
+			"name": "Grace of NurpuR"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 83,
+		"fields": {
+			"name": "Hammer"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 84,
+		"fields": {
+			"name": "Heal"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 85,
+		"fields": {
+			"name": "Heat Signature"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 86,
+		"fields": {
+			"name": "Hood of HadnuR"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 87,
+		"fields": {
+			"name": "Hostility"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 88,
+		"fields": {
+			"name": "Hunt"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 89,
+		"fields": {
+			"name": "Ice Heart"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 90,
+		"fields": {
+			"name": "Illusion"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 91,
+		"fields": {
+			"name": "Initiate"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 92,
+		"fields": {
+			"name": "Levitation"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 93,
+		"fields": {
+			"name": "Light"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 94,
+		"fields": {
+			"name": "Lightning"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 95,
+		"fields": {
+			"name": "Lung of NerpuR"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 96,
+		"fields": {
+			"name": "Magenerpi"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 97,
+		"fields": {
+			"name": "Malaria"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 98,
+		"fields": {
+			"name": "Manipulate Water"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 99,
+		"fields": {
+			"name": "Manipulate Weather"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 100,
+		"fields": {
+			"name": "Manipulate Wind"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 101,
+		"fields": {
+			"name": "Mask"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 102,
+		"fields": {
+			"name": "Mind Control"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 103,
+		"fields": {
+			"name": "Mind Reading"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 104,
+		"fields": {
+			"name": "Mistletoe"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 105,
+		"fields": {
+			"name": "Moss Mask"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 106,
+		"fields": {
+			"name": "Neutalise Posion"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 107,
+		"fields": {
+			"name": "Night Vision"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 108,
+		"fields": {
+			"name": "Observation"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 109,
+		"fields": {
+			"name": "Paralyse"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 110,
+		"fields": {
+			"name": "Petrifacation"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 111,
+		"fields": {
+			"name": "Poison"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 112,
+		"fields": {
+			"name": "Purify Nutrition"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 113,
+		"fields": {
+			"name": "Remove Curse"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 114,
+		"fields": {
+			"name": "Remove Paralysis"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 115,
+		"fields": {
+			"name": "Resist Disease"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 116,
+		"fields": {
+			"name": "Resist Poison"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 117,
+		"fields": {
+			"name": "Restoration"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 118,
+		"fields": {
+			"name": "Resurrection"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 119,
+		"fields": {
+			"name": "Reverse Petrification"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 120,
+		"fields": {
+			"name": "Sanctuary"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 121,
+		"fields": {
+			"name": "Sacred Ground"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 122,
+		"fields": {
+			"name": "Seven-Mile-Boots"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 123,
+		"fields": {
+			"name": "Silence"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 124,
+		"fields": {
+			"name": "Snowflake"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 125,
+		"fields": {
+			"name": "Sorcerous Shape"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 126,
+		"fields": {
+			"name": "Sorcerous Sleep"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 127,
+		"fields": {
+			"name": "Spirit Voice"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 128,
+		"fields": {
+			"name": "Summon Creature"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 129,
+		"fields": {
+			"name": "Telekinesis"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 130,
+		"fields": {
+			"name": "Telepathy"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 131,
+		"fields": {
+			"name": "Teleportation"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 132,
+		"fields": {
+			"name": "Totem Animal"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 133,
+		"fields": {
+			"name": "Trojan Fortress"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 134,
+		"fields": {
+			"name": "Troll Fear"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 135,
+		"fields": {
+			"name": "Veil"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 136,
+		"fields": {
+			"name": "Void Travel"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 137,
+		"fields": {
+			"name": "Wall of Thorns"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 138,
+		"fields": {
+			"name": "Whirlwind"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 139,
+		"fields": {
+			"name": "Wind Gust"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 140,
+		"fields": {
+			"name": "Cold Toughness"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 141,
+		"fields": {
+			"name": "Disease Resistance"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 142,
+		"fields": {
+			"name": "Electricity Toughness"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 143,
+		"fields": {
+			"name": "Heat Toughness"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 144,
+		"fields": {
+			"name": "Physical Toughness"
+		}
+	}, {
+		"model": "myfarog.itembonustype",
+		"pk": 145,
+		"fields": {
+			"name": "Poison Resistance"
+		}
+	}, {
+		"model": "myfarog.itembonus",
+		"pk": 1,
+		"fields": {
+			"type": 11,
+			"value": "1"
+		}
+	}, {
+		"model": "myfarog.itembonus",
+		"pk": 2,
+		"fields": {
+			"type": 8,
+			"value": "1"
+		}
+	}, {
+		"model": "myfarog.item",
+		"pk": 1,
+		"fields": {
+			"name": "Unarmed",
+			"type": "",
+			"description": null,
+			"weight": 0,
+			"unique": false,
+			"material": 14,
+			"dimensions": "0x0x0",
+			"prerequisites": [],
+			"bonuses": []
+		}
+	}, {
+		"model": "myfarog.item",
+		"pk": 2,
+		"fields": {
+			"name": "White T-Shirt",
+			"type": "",
+			"description": "A white T-shirt with a single pocket",
+			"weight": 1,
+			"unique": false,
+			"material": 4,
+			"dimensions": null,
+			"prerequisites": [],
+			"bonuses": []
+		}
+	}, {
+		"model": "myfarog.item",
+		"pk": 3,
+		"fields": {
+			"name": "Golden Turtle Signet",
+			"type": "",
+			"description": "A small turtle made out of gold.",
+			"weight": 16,
+			"unique": false,
+			"material": 5,
+			"dimensions": "0.5x1x1.5",
+			"prerequisites": [],
+			"bonuses": [2]
+		}
+	}, {
+		"model": "myfarog.container",
+		"pk": 2,
+		"fields": {
+			"prerequisites": [],
+			"bonuses": []
+		}
+	}, {
+		"model": "myfarog.compartment",
+		"pk": 1,
+		"fields": {
+			"container": 2,
+			"name": "Breast Pocket",
+			"type": "pocket",
+			"hidden": false,
+			"lockable": false,
+			"is_locked": false
+		}
+	}, {
+		"model": "myfarog.shirt",
+		"pk": 2,
+		"fields": {
+			"prerequisites": [],
+			"bonuses": []
+		}
+	}, {
+		"model": "myfarog.weapon",
+		"pk": 1,
+		"fields": {
+			"damage": "1D1",
+			"weapon_type": "melee",
+			"cut": 6,
+			"shock": 2,
+			"range": 3,
+			"OV_mod": -2,
+			"DV_mod": -8,
+			"AP": 0,
+			"prerequisites": [],
+			"bonuses": []
+		}
+	}, {
+		"model": "myfarog.trinket",
+		"pk": 3,
+		"fields": {
+			"prerequisites": [],
+			"bonuses": [2]
+		}
+	}, {
+		"model": "myfarog.species",
+		"pk": 1,
+		"fields": {
+			"name": "Human",
+			"gender_ratio": 50,
+			"age": "D3+15",
+			"maximum_age": 5
+		}
+	}, {
+		"model": "myfarog.speciesgendermod",
+		"pk": 1,
+		"fields": {
+			"species": 1,
+			"gender": "male",
+			"height": "58+4D6",
+			"CHA": 0,
+			"CON": 0,
+			"DEX": 0,
+			"INT": 0,
+			"STR": 0,
+			"WIL": 0
+		}
+	}, {
+		"model": "myfarog.speciesgendermod",
+		"pk": 2,
+		"fields": {
+			"species": 1,
+			"gender": "female",
+			"height": "53+4D6",
+			"CHA": 2,
+			"CON": 0,
+			"DEX": 0,
+			"INT": 0,
+			"STR": -2,
+			"WIL": 0
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 1,
+		"fields": {
+			"name": "Civilian"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 2,
+		"fields": {
+			"name": "Warrior"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 3,
+		"fields": {
+			"name": "Stalker"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 4,
+		"fields": {
+			"name": "Trickster"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 5,
+		"fields": {
+			"name": "Berserk"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 6,
+		"fields": {
+			"name": "Ranger"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 7,
+		"fields": {
+			"name": "Bard"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 8,
+		"fields": {
+			"name": "Sorcerer"
+		}
+	}, {
+		"model": "myfarog.role",
+		"pk": 9,
+		"fields": {
+			"name": "Valkyrie"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 1,
+		"fields": {
+			"name": "Acrobatics",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": 0,
+			"description": "Acrobatics determines how well your character can move about, keep his balance or jump and land softly."
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 2,
+		"fields": {
+			"name": "Acting",
+			"type": "SS",
+			"attribute": "CHA",
+			"untrained": -2,
+			"description": "Acting determines your ability to tell convincing lies and to, in a convincing way, play a role.  The skill is used to deceive others, but also by religious characters when they participate in High Festivals in temples."
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 3,
+		"fields": {
+			"name": "Alchemy",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Alchmey"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 4,
+		"fields": {
+			"name": "Climbing",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": 0,
+			"description": "Climbing"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 5,
+		"fields": {
+			"name": "Crafts",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Crafts"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 6,
+		"fields": {
+			"name": "Dancing",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": -2,
+			"description": "Dancing"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 7,
+		"fields": {
+			"name": "Dodging",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": 1,
+			"description": "Dodging is special"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 8,
+		"fields": {
+			"name": "Flute Playing",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Flute playing is depreciated"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 9,
+		"fields": {
+			"name": "Foraging",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -2,
+			"description": "Foraging"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 10,
+		"fields": {
+			"name": "Fortitude",
+			"type": "SS",
+			"attribute": "WIL",
+			"untrained": 0,
+			"description": "Fortitude"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 11,
+		"fields": {
+			"name": "Healing",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Healing"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 12,
+		"fields": {
+			"name": "Lyre Playing",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Depreciated"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 13,
+		"fields": {
+			"name": "Mechanics",
+			"type": "SS",
+			"attribute": "DEX",
+			"untrained": -5,
+			"description": "Mechanics"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 14,
+		"fields": {
+			"name": "Melee",
+			"type": "CS",
+			"attribute": "STR",
+			"untrained": -2,
+			"description": "Melee"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 15,
+		"fields": {
+			"name": "Missile",
+			"type": "CS",
+			"attribute": "DEX",
+			"untrained": -2,
+			"description": "Missile"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 16,
+		"fields": {
+			"name": "Navigation",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -2,
+			"description": "Navigation"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 17,
+		"fields": {
+			"name": "Perception",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": 1,
+			"description": "Special case"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 18,
+		"fields": {
+			"name": "Poetry",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Poetry"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 19,
+		"fields": {
+			"name": "Religious Tradition",
+			"type": "SS",
+			"attribute": "CHA",
+			"untrained": -5,
+			"description": "asdfsdf"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 20,
+		"fields": {
+			"name": "Riding",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": -5,
+			"description": "Riding a horse"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 21,
+		"fields": {
+			"name": "Rune Lore",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Rune Lore"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 22,
+		"fields": {
+			"name": "Singing",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Singing"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 23,
+		"fields": {
+			"name": "Social Skills",
+			"type": "SS",
+			"attribute": "CHA",
+			"untrained": -2,
+			"description": "Social Skills"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 24,
+		"fields": {
+			"name": "Stamina",
+			"type": "SS",
+			"attribute": "CON",
+			"untrained": 0,
+			"description": "Special"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 25,
+		"fields": {
+			"name": "Stealth",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": 0,
+			"description": "Stealth"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 26,
+		"fields": {
+			"name": "Swimming",
+			"type": "MS",
+			"attribute": "CON",
+			"untrained": -5,
+			"description": "Swimming"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 27,
+		"fields": {
+			"name": "Tempo",
+			"type": "MS",
+			"attribute": "STR",
+			"untrained": 40,
+			"description": "Special"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 28,
+		"fields": {
+			"name": "Tracking",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -2,
+			"description": "Tracking"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 29,
+		"fields": {
+			"name": "Trickery",
+			"type": "SS",
+			"attribute": "DEX",
+			"untrained": -2,
+			"description": "Trickery"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 30,
+		"fields": {
+			"name": "World Lore",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "World Lore"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 32,
+		"fields": {
+			"name": "Seamanship",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "seasmanship"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 40,
+		"fields": {
+			"name": "Computers",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Computers"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 41,
+		"fields": {
+			"name": "Driving",
+			"type": "MS",
+			"attribute": "DEX",
+			"untrained": -5,
+			"description": "Driving"
+		}
+	}, {
+		"model": "myfarog.skill",
+		"pk": 42,
+		"fields": {
+			"name": "Science",
+			"type": "SS",
+			"attribute": "INT",
+			"untrained": -5,
+			"description": "Sciene"
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 1,
+		"fields": {
+			"role": 7,
+			"skill": 2
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 2,
+		"fields": {
+			"role": 7,
+			"skill": 3
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 3,
+		"fields": {
+			"role": 7,
+			"skill": 6
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 4,
+		"fields": {
+			"role": 7,
+			"skill": 8
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 5,
+		"fields": {
+			"role": 7,
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 6,
+		"fields": {
+			"role": 7,
+			"skill": 12
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 7,
+		"fields": {
+			"role": 7,
+			"skill": 18
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 8,
+		"fields": {
+			"role": 7,
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 9,
+		"fields": {
+			"role": 7,
+			"skill": 22
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 10,
+		"fields": {
+			"role": 7,
+			"skill": 23
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 11,
+		"fields": {
+			"role": 7,
+			"skill": 30
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 12,
+		"fields": {
+			"role": 5,
+			"skill": 1
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 13,
+		"fields": {
+			"role": 5,
+			"skill": 6
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 14,
+		"fields": {
+			"role": 5,
+			"skill": 8
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 15,
+		"fields": {
+			"role": 5,
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 16,
+		"fields": {
+			"role": 5,
+			"skill": 14
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 17,
+		"fields": {
+			"role": 5,
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 18,
+		"fields": {
+			"role": 5,
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 19,
+		"fields": {
+			"role": 6,
+			"skill": 1
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 20,
+		"fields": {
+			"role": 6,
+			"skill": 9
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 21,
+		"fields": {
+			"role": 6,
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 22,
+		"fields": {
+			"role": 6,
+			"skill": 15
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 23,
+		"fields": {
+			"role": 6,
+			"skill": 16
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 24,
+		"fields": {
+			"role": 6,
+			"skill": 18
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 25,
+		"fields": {
+			"role": 6,
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 26,
+		"fields": {
+			"role": 6,
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 27,
+		"fields": {
+			"role": 6,
+			"skill": 25
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 28,
+		"fields": {
+			"role": 6,
+			"skill": 26
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 29,
+		"fields": {
+			"role": 6,
+			"skill": 28
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 30,
+		"fields": {
+			"role": 8,
+			"skill": 3
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 31,
+		"fields": {
+			"role": 8,
+			"skill": 10
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 32,
+		"fields": {
+			"role": 8,
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 33,
+		"fields": {
+			"role": 8,
+			"skill": 18
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 34,
+		"fields": {
+			"role": 8,
+			"skill": 21
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 35,
+		"fields": {
+			"role": 8,
+			"skill": 22
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 36,
+		"fields": {
+			"role": 8,
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 37,
+		"fields": {
+			"role": 8,
+			"skill": 30
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 38,
+		"fields": {
+			"role": 3,
+			"skill": 1
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 39,
+		"fields": {
+			"role": 3,
+			"skill": 4
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 40,
+		"fields": {
+			"role": 3,
+			"skill": 16
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 41,
+		"fields": {
+			"role": 3,
+			"skill": 20
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 42,
+		"fields": {
+			"role": 3,
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 43,
+		"fields": {
+			"role": 3,
+			"skill": 25
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 44,
+		"fields": {
+			"role": 3,
+			"skill": 26
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 45,
+		"fields": {
+			"role": 3,
+			"skill": 28
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 46,
+		"fields": {
+			"role": 4,
+			"skill": 1
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 47,
+		"fields": {
+			"role": 4,
+			"skill": 2
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 48,
+		"fields": {
+			"role": 4,
+			"skill": 4
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 49,
+		"fields": {
+			"role": 4,
+			"skill": 13
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 50,
+		"fields": {
+			"role": 4,
+			"skill": 23
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 51,
+		"fields": {
+			"role": 4,
+			"skill": 25
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 52,
+		"fields": {
+			"role": 4,
+			"skill": 29
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 53,
+		"fields": {
+			"role": 2,
+			"skill": 1
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 54,
+		"fields": {
+			"role": 2,
+			"skill": 14
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 55,
+		"fields": {
+			"role": 2,
+			"skill": 15
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 56,
+		"fields": {
+			"role": 2,
+			"skill": 20
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 57,
+		"fields": {
+			"role": 2,
+			"skill": 32
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 58,
+		"fields": {
+			"role": 2,
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 59,
+		"fields": {
+			"role": 9,
+			"skill": 1
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 60,
+		"fields": {
+			"role": 9,
+			"skill": 6
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 61,
+		"fields": {
+			"role": 9,
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 62,
+		"fields": {
+			"role": 9,
+			"skill": 15
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 63,
+		"fields": {
+			"role": 9,
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.roleskill",
+		"pk": 64,
+		"fields": {
+			"role": 9,
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 1,
+		"fields": {
+			"name": "Agressive",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 2,
+		"fields": {
+			"name": "Athletic",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 3,
+		"fields": {
+			"name": "Courageous",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 4,
+		"fields": {
+			"name": "Curious",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 5,
+		"fields": {
+			"name": "Durable",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 6,
+		"fields": {
+			"name": "Empathic",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 7,
+		"fields": {
+			"name": "Fighter",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 8,
+		"fields": {
+			"name": "Focused",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 9,
+		"fields": {
+			"name": "Good Reflexes",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 10,
+		"fields": {
+			"name": "Hawk-eyed",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 11,
+		"fields": {
+			"name": "Herbalist",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 12,
+		"fields": {
+			"name": "Humble",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 13,
+		"fields": {
+			"name": "Mariner",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 14,
+		"fields": {
+			"name": "Marked",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 15,
+		"fields": {
+			"name": "Melpogomenean",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 16,
+		"fields": {
+			"name": "Merman",
+			"prerequisite": 21
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 17,
+		"fields": {
+			"name": "Nimble",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 18,
+		"fields": {
+			"name": "Polyhymnian",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 19,
+		"fields": {
+			"name": "Strong Grip",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 20,
+		"fields": {
+			"name": "Survivor",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 21,
+		"fields": {
+			"name": "Swimmer",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 22,
+		"fields": {
+			"name": "Thalian",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 23,
+		"fields": {
+			"name": "Thrower",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 24,
+		"fields": {
+			"name": "Tough",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 25,
+		"fields": {
+			"name": "Warm Hands",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 26,
+		"fields": {
+			"name": "Acrobatic",
+			"prerequisite": 2
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 27,
+		"fields": {
+			"name": "Animal Friend",
+			"prerequisite": 6
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 28,
+		"fields": {
+			"name": "Arachnean",
+			"prerequisite": 19
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 29,
+		"fields": {
+			"name": "Argonautic",
+			"prerequisite": 13
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 30,
+		"fields": {
+			"name": "Tracker",
+			"prerequisite": 8
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 31,
+		"fields": {
+			"name": "Bloodhound",
+			"prerequisite": 30
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 32,
+		"fields": {
+			"name": "Calliopean",
+			"prerequisite": 18
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 33,
+		"fields": {
+			"name": "Careful",
+			"prerequisite": 8
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 34,
+		"fields": {
+			"name": "Cliopean",
+			"prerequisite": 4
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 35,
+		"fields": {
+			"name": "Craftsman",
+			"prerequisite": 17
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 36,
+		"fields": {
+			"name": "Dart Thrower",
+			"prerequisite": 23
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 37,
+		"fields": {
+			"name": "Dodger",
+			"prerequisite": 9
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 38,
+		"fields": {
+			"name": "Enduring",
+			"prerequisite": 2
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 39,
+		"fields": {
+			"name": "Eratorean",
+			"prerequisite": 18
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 40,
+		"fields": {
+			"name": "Euterpean",
+			"prerequisite": 18
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 41,
+		"fields": {
+			"name": "Fast",
+			"prerequisite": 2
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 42,
+		"fields": {
+			"name": "Favourite",
+			"prerequisite": 14
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 43,
+		"fields": {
+			"name": "Fearless",
+			"prerequisite": 3
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 44,
+		"fields": {
+			"name": "Fist Fighter",
+			"prerequisite": 7
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 45,
+		"fields": {
+			"name": "Hephaestusean",
+			"prerequisite": 35
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 46,
+		"fields": {
+			"name": "Heraklean",
+			"prerequisite": 7
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 47,
+		"fields": {
+			"name": "Inquisitive",
+			"prerequisite": 34
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 48,
+		"fields": {
+			"name": "Lancer",
+			"prerequisite": 7
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 49,
+		"fields": {
+			"name": "Light Footed",
+			"prerequisite": 33
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 50,
+		"fields": {
+			"name": "Mechanic",
+			"prerequisite": 17
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 51,
+		"fields": {
+			"name": "Perseusean",
+			"prerequisite": 9
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 52,
+		"fields": {
+			"name": "Pietistic",
+			"prerequisite": 12
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 53,
+		"fields": {
+			"name": "Rider",
+			"prerequisite": 27
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 54,
+		"fields": {
+			"name": "Sensitive",
+			"prerequisite": 6
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 55,
+		"fields": {
+			"name": "Shooter",
+			"prerequisite": 8
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 56,
+		"fields": {
+			"name": "Sharpshooter",
+			"prerequisite": 55
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 57,
+		"fields": {
+			"name": "Sirenean",
+			"prerequisite": 18
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 58,
+		"fields": {
+			"name": "Slinger",
+			"prerequisite": 23
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 59,
+		"fields": {
+			"name": "Spear Thrower",
+			"prerequisite": 23
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 60,
+		"fields": {
+			"name": "Springy",
+			"prerequisite": 2
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 61,
+		"fields": {
+			"name": "Sword Dancer",
+			"prerequisite": 7
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 62,
+		"fields": {
+			"name": "Terpsichorean",
+			"prerequisite": 26
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 63,
+		"fields": {
+			"name": "Trickster",
+			"prerequisite": 17
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 64,
+		"fields": {
+			"name": "Uranian",
+			"prerequisite": 30
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 65,
+		"fields": {
+			"name": "Zevsean",
+			"prerequisite": 23
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 66,
+		"fields": {
+			"name": "Driver",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talent",
+		"pk": 67,
+		"fields": {
+			"name": "Strong Minded",
+			"prerequisite": null
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 1,
+		"fields": {
+			"talent": 26,
+			"skill": 1,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 2,
+		"fields": {
+			"talent": 26,
+			"skill": 6,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 4,
+		"fields": {
+			"talent": 27,
+			"skill": 20,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 5,
+		"fields": {
+			"talent": 28,
+			"skill": 4,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 6,
+		"fields": {
+			"talent": 29,
+			"skill": 32,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 7,
+		"fields": {
+			"talent": 2,
+			"skill": 27,
+			"mod": 5
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 8,
+		"fields": {
+			"talent": 31,
+			"skill": 28,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 9,
+		"fields": {
+			"talent": 32,
+			"skill": 18,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 10,
+		"fields": {
+			"talent": 33,
+			"skill": 17,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 11,
+		"fields": {
+			"talent": 33,
+			"skill": 25,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 12,
+		"fields": {
+			"talent": 34,
+			"skill": 30,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 14,
+		"fields": {
+			"talent": 35,
+			"skill": 5,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 15,
+		"fields": {
+			"talent": 4,
+			"skill": 30,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 16,
+		"fields": {
+			"talent": 36,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 17,
+		"fields": {
+			"talent": 37,
+			"skill": 7,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 19,
+		"fields": {
+			"talent": 5,
+			"skill": 24,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 20,
+		"fields": {
+			"talent": 6,
+			"skill": 23,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 21,
+		"fields": {
+			"talent": 6,
+			"skill": 11,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 22,
+		"fields": {
+			"talent": 38,
+			"skill": 24,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 23,
+		"fields": {
+			"talent": 39,
+			"skill": 12,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 24,
+		"fields": {
+			"talent": 40,
+			"skill": 8,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 25,
+		"fields": {
+			"talent": 41,
+			"skill": 27,
+			"mod": 5
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 26,
+		"fields": {
+			"talent": 42,
+			"skill": 10,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 28,
+		"fields": {
+			"talent": 7,
+			"skill": 14,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 29,
+		"fields": {
+			"talent": 44,
+			"skill": 14,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 30,
+		"fields": {
+			"talent": 8,
+			"skill": 17,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 32,
+		"fields": {
+			"talent": 9,
+			"skill": 7,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 33,
+		"fields": {
+			"talent": 45,
+			"skill": 5,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 34,
+		"fields": {
+			"talent": 46,
+			"skill": 14,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 35,
+		"fields": {
+			"talent": 11,
+			"skill": 3,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 36,
+		"fields": {
+			"talent": 11,
+			"skill": 9,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 37,
+		"fields": {
+			"talent": 12,
+			"skill": 19,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 38,
+		"fields": {
+			"talent": 47,
+			"skill": 21,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 39,
+		"fields": {
+			"talent": 47,
+			"skill": 3,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 40,
+		"fields": {
+			"talent": 48,
+			"skill": 14,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 41,
+		"fields": {
+			"talent": 49,
+			"skill": 25,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 43,
+		"fields": {
+			"talent": 13,
+			"skill": 32,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 44,
+		"fields": {
+			"talent": 14,
+			"skill": 10,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 45,
+		"fields": {
+			"talent": 50,
+			"skill": 13,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 46,
+		"fields": {
+			"talent": 15,
+			"skill": 2,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 47,
+		"fields": {
+			"talent": 16,
+			"skill": 26,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 48,
+		"fields": {
+			"talent": 17,
+			"skill": 13,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 49,
+		"fields": {
+			"talent": 17,
+			"skill": 29,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 50,
+		"fields": {
+			"talent": 52,
+			"skill": 19,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 51,
+		"fields": {
+			"talent": 18,
+			"skill": 8,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 52,
+		"fields": {
+			"talent": 18,
+			"skill": 12,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 53,
+		"fields": {
+			"talent": 18,
+			"skill": 18,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 54,
+		"fields": {
+			"talent": 18,
+			"skill": 22,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 55,
+		"fields": {
+			"talent": 53,
+			"skill": 20,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 56,
+		"fields": {
+			"talent": 54,
+			"skill": 21,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 57,
+		"fields": {
+			"talent": 56,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 58,
+		"fields": {
+			"talent": 55,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 59,
+		"fields": {
+			"talent": 57,
+			"skill": 22,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 60,
+		"fields": {
+			"talent": 58,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 61,
+		"fields": {
+			"talent": 59,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 62,
+		"fields": {
+			"talent": 60,
+			"skill": 1,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 63,
+		"fields": {
+			"talent": 19,
+			"skill": 4,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 66,
+		"fields": {
+			"talent": 20,
+			"skill": 9,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 67,
+		"fields": {
+			"talent": 21,
+			"skill": 26,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 68,
+		"fields": {
+			"talent": 61,
+			"skill": 14,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 69,
+		"fields": {
+			"talent": 62,
+			"skill": 6,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 70,
+		"fields": {
+			"talent": 22,
+			"skill": 23,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 71,
+		"fields": {
+			"talent": 22,
+			"skill": 2,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 72,
+		"fields": {
+			"talent": 23,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 76,
+		"fields": {
+			"talent": 30,
+			"skill": 28,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 77,
+		"fields": {
+			"talent": 30,
+			"skill": 16,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 78,
+		"fields": {
+			"talent": 63,
+			"skill": 29,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 79,
+		"fields": {
+			"talent": 64,
+			"skill": 16,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 80,
+		"fields": {
+			"talent": 25,
+			"skill": 11,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 81,
+		"fields": {
+			"talent": 65,
+			"skill": 15,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentskill",
+		"pk": 82,
+		"fields": {
+			"talent": 66,
+			"skill": 41,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 1,
+		"fields": {
+			"talent": 1,
+			"extra": "Initiative",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 2,
+		"fields": {
+			"talent": 3,
+			"extra": "Morale",
+			"mod": 2
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 3,
+		"fields": {
+			"talent": 5,
+			"extra": "Heat Toughness",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 4,
+		"fields": {
+			"talent": 20,
+			"extra": "Cold Toughness",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 5,
+		"fields": {
+			"talent": 20,
+			"extra": "Disease Resistance",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 6,
+		"fields": {
+			"talent": 24,
+			"extra": "Electrical Toughness",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 7,
+		"fields": {
+			"talent": 24,
+			"extra": "Physical Toughness",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 8,
+		"fields": {
+			"talent": 24,
+			"extra": "Posion Resistance",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 9,
+		"fields": {
+			"talent": 9,
+			"extra": "Initiative",
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 10,
+		"fields": {
+			"talent": 43,
+			"extra": "Morale",
+			"mod": 2
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 11,
+		"fields": {
+			"talent": 43,
+			"extra": "Morale",
+			"mod": 2
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 12,
+		"fields": {
+			"talent": 43,
+			"extra": "Mental Toughness",
+			"mod": 2
+		}
+	}, {
+		"model": "myfarog.talentextra",
+		"pk": 13,
+		"fields": {
+			"talent": 67,
+			"extra": "Mental Toughness",
+			"mod": 2
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 1,
+		"fields": {
+			"name": "Asu"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 2,
+		"fields": {
+			"name": "Librue"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 3,
+		"fields": {
+			"name": "Khem"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 4,
+		"fields": {
+			"name": "Akade"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 5,
+		"fields": {
+			"name": "Agadir"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 6,
+		"fields": {
+			"name": "Andalanga"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 7,
+		"fields": {
+			"name": "Ellinea"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 8,
+		"fields": {
+			"name": "Erulia"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 9,
+		"fields": {
+			"name": "Pripenio"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 10,
+		"fields": {
+			"name": "Skanpinawio"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 11,
+		"fields": {
+			"name": "Skudia"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 12,
+		"fields": {
+			"name": "Tawia"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 13,
+		"fields": {
+			"name": "Troskenia"
+		}
+	}, {
+		"model": "myfarog.culture",
+		"pk": 14,
+		"fields": {
+			"name": "Haflon"
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 1,
+		"fields": {
+			"culture": 1,
+			"gender": "male",
+			"skill": 9
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 2,
+		"fields": {
+			"culture": 1,
+			"gender": "male",
+			"skill": 28
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 3,
+		"fields": {
+			"culture": 1,
+			"gender": "male",
+			"skill": 29
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 4,
+		"fields": {
+			"culture": 2,
+			"gender": "male",
+			"skill": 2
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 5,
+		"fields": {
+			"culture": 2,
+			"gender": "male",
+			"skill": 4
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 6,
+		"fields": {
+			"culture": 2,
+			"gender": "male",
+			"skill": 24
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 7,
+		"fields": {
+			"culture": 3,
+			"gender": "male",
+			"skill": 3
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 8,
+		"fields": {
+			"culture": 3,
+			"gender": "male",
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 9,
+		"fields": {
+			"culture": 3,
+			"gender": "male",
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 10,
+		"fields": {
+			"culture": 4,
+			"gender": "male",
+			"skill": 2
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 11,
+		"fields": {
+			"culture": 4,
+			"gender": "male",
+			"skill": 5
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 12,
+		"fields": {
+			"culture": 4,
+			"gender": "male",
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 13,
+		"fields": {
+			"culture": 5,
+			"gender": "male",
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 14,
+		"fields": {
+			"culture": 5,
+			"gender": "male",
+			"skill": 16
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 15,
+		"fields": {
+			"culture": 5,
+			"gender": "male",
+			"skill": 30
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 16,
+		"fields": {
+			"culture": 6,
+			"gender": "male",
+			"skill": 5
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 17,
+		"fields": {
+			"culture": 6,
+			"gender": "male",
+			"skill": 16
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 18,
+		"fields": {
+			"culture": 6,
+			"gender": "male",
+			"skill": 32
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 19,
+		"fields": {
+			"culture": 7,
+			"gender": "male",
+			"skill": 12
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 20,
+		"fields": {
+			"culture": 7,
+			"gender": "male",
+			"skill": 18
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 21,
+		"fields": {
+			"culture": 7,
+			"gender": "male",
+			"skill": 30
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 22,
+		"fields": {
+			"culture": 8,
+			"gender": "male",
+			"skill": 14
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 23,
+		"fields": {
+			"culture": 8,
+			"gender": "male",
+			"skill": 18
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 24,
+		"fields": {
+			"culture": 8,
+			"gender": "male",
+			"skill": 20
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 25,
+		"fields": {
+			"culture": 9,
+			"gender": "male",
+			"skill": 5
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 26,
+		"fields": {
+			"culture": 9,
+			"gender": "male",
+			"skill": 14
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 27,
+		"fields": {
+			"culture": 9,
+			"gender": "male",
+			"skill": 22
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 28,
+		"fields": {
+			"culture": 10,
+			"gender": "male",
+			"skill": 9
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 29,
+		"fields": {
+			"culture": 10,
+			"gender": "male",
+			"skill": 32
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 30,
+		"fields": {
+			"culture": 10,
+			"gender": "male",
+			"skill": 14
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 31,
+		"fields": {
+			"culture": 11,
+			"gender": "male",
+			"skill": 15
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 32,
+		"fields": {
+			"culture": 11,
+			"gender": "male",
+			"skill": 20
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 33,
+		"fields": {
+			"culture": 11,
+			"gender": "male",
+			"skill": 25
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 34,
+		"fields": {
+			"culture": 12,
+			"gender": "male",
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 35,
+		"fields": {
+			"culture": 12,
+			"gender": "male",
+			"skill": 16
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 36,
+		"fields": {
+			"culture": 12,
+			"gender": "male",
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 37,
+		"fields": {
+			"culture": 13,
+			"gender": "male",
+			"skill": 2
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 38,
+		"fields": {
+			"culture": 13,
+			"gender": "male",
+			"skill": 23
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 39,
+		"fields": {
+			"culture": 13,
+			"gender": "male",
+			"skill": 30
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 40,
+		"fields": {
+			"culture": 14,
+			"gender": "male",
+			"skill": 14
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 41,
+		"fields": {
+			"culture": 14,
+			"gender": "male",
+			"skill": 16
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 42,
+		"fields": {
+			"culture": 14,
+			"gender": "male",
+			"skill": 32
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 43,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 2
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 44,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 5
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 45,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 11
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 46,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 9
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 47,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 19
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 48,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 22
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 49,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 23
+		}
+	}, {
+		"model": "myfarog.culturegenderskill",
+		"pk": 50,
+		"fields": {
+			"culture": null,
+			"gender": "female",
+			"skill": 30
+		}
+	}, {
+		"model": "myfarog.spellelement",
+		"pk": 1,
+		"fields": {
+			"name": "Air",
+			"symbol": "\u25b2"
+		}
+	}, {
+		"model": "myfarog.spellelement",
+		"pk": 2,
+		"fields": {
+			"name": "Earth",
+			"symbol": "\u25bc"
+		}
+	}, {
+		"model": "myfarog.spellelement",
+		"pk": 3,
+		"fields": {
+			"name": "Fire",
+			"symbol": "\u25b3"
+		}
+	}, {
+		"model": "myfarog.spellelement",
+		"pk": 4,
+		"fields": {
+			"name": "Water",
+			"symbol": "\u25bd"
+		}
+	}, {
+		"model": "myfarog.spellelement",
+		"pk": 5,
+		"fields": {
+			"name": "Spirit",
+			"symbol": "\u25cf"
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 1,
+		"fields": {
+			"name": "Alarm Bell",
+			"description": "An alarm bell that only the spell-caster can hear will ring and ward him if certain conditions are present in an alarm zone.  The alarm zone is an area up to 20' radius large.  The spell-caster can himself define what shall trigger the alarm bell.  if can be if a certain creature enters, or if a certain number of gold nuggets are present, if the temperature drops below 0, or whatever.  The imagine of the player is the only limit.  A character entering an alarm zone can test his Rune Lore against a DD equal to 15 to understand that he has entered some sort of sorcerous zone.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 2,
+		"fields": {
+			"name": "Awakening",
+			"description": "AWAK",
+			"power_level": 3,
+			"elements": [3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 3,
+		"fields": {
+			"name": "Bear Hug",
+			"description": "Bear Hug",
+			"power_level": 1,
+			"elements": [4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 4,
+		"fields": {
+			"name": "Calm Creature",
+			"description": "Calm Creature",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 5,
+		"fields": {
+			"name": "Charm",
+			"description": "Charm",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 6,
+		"fields": {
+			"name": "Clairvoyance",
+			"description": "Clairvoyance",
+			"power_level": 3,
+			"elements": [1, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 7,
+		"fields": {
+			"name": "Conscience",
+			"description": "Conscience",
+			"power_level": 4,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 8,
+		"fields": {
+			"name": "Courage",
+			"description": "Courage",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 9,
+		"fields": {
+			"name": "Create Hulda",
+			"description": "Create Hulda",
+			"power_level": 9,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 10,
+		"fields": {
+			"name": "Creatue Stone Guardian",
+			"description": "Create Stone Guardian",
+			"power_level": 10,
+			"elements": [5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 11,
+		"fields": {
+			"name": "Create Nar",
+			"description": "Create Nar",
+			"power_level": 3,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 12,
+		"fields": {
+			"name": "Create Wight",
+			"description": "Create Wight",
+			"power_level": 5,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 13,
+		"fields": {
+			"name": "Cure Malaria",
+			"description": "Cure Malaria (Influenza)",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 14,
+		"fields": {
+			"name": "Cure Trama",
+			"description": "Cure Trama",
+			"power_level": 3,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 15,
+		"fields": {
+			"name": "Curse",
+			"description": "Curse",
+			"power_level": 3,
+			"elements": [2, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 16,
+		"fields": {
+			"name": "Disclose Observation",
+			"description": "Disclose Observation",
+			"power_level": 4,
+			"elements": [1, 3, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 17,
+		"fields": {
+			"name": "Discover Posion",
+			"description": "DP",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 18,
+		"fields": {
+			"name": "Dispel",
+			"description": "Dispel",
+			"power_level": 3,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 19,
+		"fields": {
+			"name": "Divine Language",
+			"description": "DL",
+			"power_level": 2,
+			"elements": [1, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 20,
+		"fields": {
+			"name": "Divine Senses",
+			"description": "Divine Senses",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 21,
+		"fields": {
+			"name": "Eternal Flame",
+			"description": "EF",
+			"power_level": 2,
+			"elements": [3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 22,
+		"fields": {
+			"name": "Ettin Eyes",
+			"description": "EE",
+			"power_level": 2,
+			"elements": [2, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 23,
+		"fields": {
+			"name": "False Sound",
+			"description": "FS",
+			"power_level": 1,
+			"elements": [1, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 24,
+		"fields": {
+			"name": "Fear",
+			"description": "Fear",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 25,
+		"fields": {
+			"name": "Fireball",
+			"description": "Fireball",
+			"power_level": 5,
+			"elements": [3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 26,
+		"fields": {
+			"name": "Fire Bolt",
+			"description": "Fire Bolt",
+			"power_level": 3,
+			"elements": [3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 27,
+		"fields": {
+			"name": "Flight",
+			"description": "Fly",
+			"power_level": 5,
+			"elements": [1, 3, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 28,
+		"fields": {
+			"name": "Fog",
+			"description": "Fog",
+			"power_level": 1,
+			"elements": [1, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 29,
+		"fields": {
+			"name": "Fruit of Nature",
+			"description": "FoN",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 30,
+		"fields": {
+			"name": "Fulgjon",
+			"description": "Follower",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 31,
+		"fields": {
+			"name": "Fumble-Foe",
+			"description": "FF",
+			"power_level": 3,
+			"elements": [2, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 32,
+		"fields": {
+			"name": "Ghost Feet",
+			"description": "GF",
+			"power_level": 1,
+			"elements": [2, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 33,
+		"fields": {
+			"name": "Grace of NurpuR",
+			"description": "Water Runner",
+			"power_level": 2,
+			"elements": [4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 34,
+		"fields": {
+			"name": "Hammer",
+			"description": "Hammer",
+			"power_level": 5,
+			"elements": [2, 3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 35,
+		"fields": {
+			"name": "Heal",
+			"description": "Heal",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 36,
+		"fields": {
+			"name": "Heat Signature",
+			"description": "HS",
+			"power_level": 2,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 37,
+		"fields": {
+			"name": "Hood of HadnuR",
+			"description": "Shadow",
+			"power_level": 1,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 38,
+		"fields": {
+			"name": "Hostility",
+			"description": "Hostility",
+			"power_level": 1,
+			"elements": [1, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 39,
+		"fields": {
+			"name": "Hunt",
+			"description": "Hunt",
+			"power_level": 1,
+			"elements": [4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 40,
+		"fields": {
+			"name": "Ice Heart",
+			"description": "Cast upon a swords & daggers weapon or an arrowhead (and for Sorcerers a bolt-head or a spear weapon as well).  The weapon inflicts D8 (PL 3), D10 (PL 4), or D12 (PL 5) extra Cold Damage to a target if the attacker achieves at least a Near Miss.",
+			"power_level": 3,
+			"elements": [4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 41,
+		"fields": {
+			"name": "Illusion",
+			"description": "Illusion",
+			"power_level": 3,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 42,
+		"fields": {
+			"name": "Initiate",
+			"description": "Only for Favours",
+			"power_level": 5,
+			"elements": []
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 43,
+		"fields": {
+			"name": "Levitation",
+			"description": "Levitation",
+			"power_level": 2,
+			"elements": [1, 3, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 44,
+		"fields": {
+			"name": "Light",
+			"description": "Light",
+			"power_level": 1,
+			"elements": [1, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 45,
+		"fields": {
+			"name": "Lightning",
+			"description": "Lightning",
+			"power_level": 6,
+			"elements": [1]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 46,
+		"fields": {
+			"name": "Lung of NerpuR",
+			"description": "Air Bubble",
+			"power_level": 4,
+			"elements": [3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 47,
+		"fields": {
+			"name": "Magenerpi",
+			"description": "Belt of Strength",
+			"power_level": 2,
+			"elements": [2, 3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 48,
+		"fields": {
+			"name": "Malaria",
+			"description": "Influenza",
+			"power_level": 1,
+			"elements": [2, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 49,
+		"fields": {
+			"name": "Manipulate Water",
+			"description": "MW",
+			"power_level": 4,
+			"elements": [4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 50,
+		"fields": {
+			"name": "Manipulate Weather",
+			"description": "MW",
+			"power_level": 4,
+			"elements": [1]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 51,
+		"fields": {
+			"name": "Manipulate Wind",
+			"description": "MW",
+			"power_level": 3,
+			"elements": [1]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 52,
+		"fields": {
+			"name": "Mask",
+			"description": "Mask",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 53,
+		"fields": {
+			"name": "Mind Control",
+			"description": "MC",
+			"power_level": 4,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 54,
+		"fields": {
+			"name": "Mind Reading",
+			"description": "MR",
+			"power_level": 2,
+			"elements": [1, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 55,
+		"fields": {
+			"name": "Mistletoe",
+			"description": "Mistletoe",
+			"power_level": 10,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 56,
+		"fields": {
+			"name": "Moss Mask",
+			"description": "MM",
+			"power_level": 1,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 57,
+		"fields": {
+			"name": "Neutalise Posion",
+			"description": "NP",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 58,
+		"fields": {
+			"name": "Night Vision",
+			"description": "NV",
+			"power_level": 1,
+			"elements": [2, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 59,
+		"fields": {
+			"name": "Observation",
+			"description": "Observation",
+			"power_level": 6,
+			"elements": [1, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 60,
+		"fields": {
+			"name": "Paralyse",
+			"description": "Paralyse",
+			"power_level": 4,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 61,
+		"fields": {
+			"name": "Petrifacation",
+			"description": "Petrify",
+			"power_level": 8,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 62,
+		"fields": {
+			"name": "Poison",
+			"description": "Poison",
+			"power_level": 1,
+			"elements": [2, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 63,
+		"fields": {
+			"name": "Purify Nutrition",
+			"description": "2 day rations of drink and food * spell PL is purified of all poisons.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 64,
+		"fields": {
+			"name": "Remove Curse",
+			"description": "Removes a curse.  To remove the curse, the spell-caster tests his spell proficiency of the spell-caster who cursed the cursed individual / object.",
+			"power_level": 3,
+			"elements": []
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 65,
+		"fields": {
+			"name": "Remove Paralysis",
+			"description": "Removes paralysis from one individual.  To succeed doing this the spell-caster needs to test his spell proficiency against a DD equal to 9 + the spell proficiency of the spell-caster who paralysed the paralysed individual/object.",
+			"power_level": 3,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 66,
+		"fields": {
+			"name": "Resist Disease",
+			"description": "An individual is given increased Disease Resistance equal to the spell-caster's spell proficiency.  This spell does not help already diseased individuals.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 67,
+		"fields": {
+			"name": "Resist Poison",
+			"description": "An individual is given increased Poison Resistance equal to the spell-caster's spell proficiency.  This spell does not help already poisoned individuals.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 68,
+		"fields": {
+			"name": "Restoration",
+			"description": "Restores all damaged character attributes in an individual (PL 1).  If the damage is defined as irreparable the damaged attributes can be restored anyhow if the spell is cast with PL 10.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 69,
+		"fields": {
+			"name": "Resurrection",
+			"description": "bring back to life",
+			"power_level": 9,
+			"elements": [1, 2, 3, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 70,
+		"fields": {
+			"name": "Reverse Petrification",
+			"description": "A petrified individual can be turned back into original form.  The spell-caster must test his spell proficiency against a DD equal to 12 + the spell proficiency of the petrifier.",
+			"power_level": 6,
+			"elements": [2]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 71,
+		"fields": {
+			"name": "Sanctuary",
+			"description": "A sanctuary up to 50' radius is created.",
+			"power_level": 2,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 72,
+		"fields": {
+			"name": "Sacred Ground",
+			"description": "An area up to 50' radius large is turned in a sacred ground.",
+			"power_level": 2,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 73,
+		"fields": {
+			"name": "Seven-Mile-Boots",
+			"description": "The target of this spell can add the spell PL * 5' to his Tempo skill (but not in relation to climbing, crawling, sneaking and tracking) and also jump twice as long and high.",
+			"power_level": 1,
+			"elements": [1]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 74,
+		"fields": {
+			"name": "Silence",
+			"description": "No sound can escape from a 20' radius large zone, centered on an object or individual.",
+			"power_level": 3,
+			"elements": [2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 75,
+		"fields": {
+			"name": "Snowflake",
+			"description": "An object or individual falls like a snowflake to the ground.",
+			"power_level": 1,
+			"elements": [1, 3, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 76,
+		"fields": {
+			"name": "Sorcerous Shape",
+			"description": "The spell-caster can create a hamr of any animal skin he may come across.",
+			"power_level": 8,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 77,
+		"fields": {
+			"name": "Sorcerous Sleep",
+			"description": "One individual falls asleep, and can not be awoken by normal means.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 78,
+		"fields": {
+			"name": "Spirit Voice",
+			"description": "A voice can be heard from somewhere when certain conditions are met.",
+			"power_level": 1,
+			"elements": [1, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 79,
+		"fields": {
+			"name": "Summon Creature",
+			"description": "A creature is summoned to serve the spell-caster.",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 80,
+		"fields": {
+			"name": "Telekinesis",
+			"description": "An individual or object weighing up to 255 lbs can be lifted and moved about with a speed of 1' per second.",
+			"power_level": 1,
+			"elements": [1, 3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 81,
+		"fields": {
+			"name": "Telepathy",
+			"description": "The spell-caster can communicate with another human being from a distance, even if the other individual is sleeping.",
+			"power_level": 4,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 82,
+		"fields": {
+			"name": "Teleportation",
+			"description": "An object or individual touched is teleported to a location up to 1000' away and in sight of the spell-caster.",
+			"power_level": 7,
+			"elements": [5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 83,
+		"fields": {
+			"name": "Totem Animal",
+			"description": "The spell-caster is not affected by fear, he will bot be stunned and not be knocked unconscious",
+			"power_level": 1,
+			"elements": [1, 2, 3, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 84,
+		"fields": {
+			"name": "Trojan Fortress",
+			"description": "The target is teleported into a maze in a spirit world.",
+			"power_level": 6,
+			"elements": [3, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 85,
+		"fields": {
+			"name": "Troll Fear",
+			"description": "Causes enemies to flee.",
+			"power_level": 1,
+			"elements": [1, 2, 3]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 86,
+		"fields": {
+			"name": "Veil",
+			"description": "The spell makes it harder to see the target.  Spell-caster or target gets the spell caster's spell proficiency / 3 (rounded up) as a mod to Stealth tests and DV.",
+			"power_level": 2,
+			"elements": [2, 4, 5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 87,
+		"fields": {
+			"name": "Void Travel",
+			"description": "Stop time for all others but the spell caster",
+			"power_level": 10,
+			"elements": [5]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 88,
+		"fields": {
+			"name": "Wall of Thorns",
+			"description": "A 5' thick wall of thorns with a width of 10' and a height of up to 20' grows up from the ground during the night where the spell-caster wants it to.",
+			"power_level": 5,
+			"elements": [2, 4]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 89,
+		"fields": {
+			"name": "Whirlwind",
+			"description": "A whirlwind under the spell-caster's control appears.",
+			"power_level": 4,
+			"elements": [1]
+		}
+	}, {
+		"model": "myfarog.spell",
+		"pk": 90,
+		"fields": {
+			"name": "Wind Gust",
+			"description": "One creature with size \u2264 the spells PL is pushed out of balance and falls.",
+			"power_level": 1,
+			"elements": [1]
+		}
+	}, {
+		"model": "myfarog.character",
+		"pk": 1,
+		"fields": {
+			"user": 1,
+			"exp": 21250,
+			"level": 9,
+			"name": "Max Headroom",
+			"gender": "male",
+			"species": 1,
+			"role": 8,
+			"age": 28,
+			"handedness": "right",
+			"CHA": 11,
+			"CON": 10,
+			"DEX": 16,
+			"INT": 18,
+			"STR": 10,
+			"WIL": 16,
+			"_cha": 0,
+			"_con": 0,
+			"_dex": 2,
+			"_int": 3,
+			"_str": 0,
+			"_wil": 2,
+			"HP": 19,
+			"SP": 14,
+			"MHP": 48,
+			"max_HP": 19,
+			"max_SP": 36,
+			"max_MHP": 48,
+			"height": 72,
+			"weight": 163,
+			"size": 0,
+			"OV_melee": -1,
+			"OV_missile": -2,
+			"DV_melee": 20,
+			"DV_missile": 18,
+			"shirt_equipment": null,
+			"pants_equipment": null,
+			"left_hand_weapon": 1,
+			"left_hand_shield": null,
+			"right_hand_weapon": 1,
+			"right_hand_shield": null,
+			"armor_equipment": null,
+			"helmet_equipment": null,
+			"left_glove_equipment": null,
+			"right_glove_equipment": null,
+			"footwear_equipment": null,
+			"necklace_equipment": null,
+			"left_earring_equipment": null,
+			"right_earring_equipment": null,
+			"ring_equipment": null,
+			"trinket_equipment": null,
+			"encumbrance_status": "Light",
+			"encumbrance_mod": 0,
+			"health_status": "Normal",
+			"health_mod": 0,
+			"mental_health_status": "Normal",
+			"mental_health_mod": 0,
+			"stamina_status": "Tired",
+			"stamina_mod": -1,
+			"stun_status": "Normal",
+			"stun_rounds": 0,
+			"morale_status": "Normal",
+			"morale_rounds": 0,
+			"morale_check_bonus": 0,
+			"morale_mod": 0,
+			"psychotic_count": 0,
+			"trauma_count": 0,
+			"fright_mod": -4,
+			"initiative_check_bonus": 2,
+			"current_battle": 1,
+			"spells": [24, 44]
+		}
+	}, {
+		"model": "myfarog.character",
+		"pk": 2,
+		"fields": {
+			"user": 1,
+			"exp": 350,
+			"level": 1,
+			"name": "Merv Peterson",
+			"gender": "male",
+			"species": 1,
+			"role": 1,
+			"age": 20,
+			"handedness": "right",
+			"CHA": 6,
+			"CON": 10,
+			"DEX": 13,
+			"INT": 5,
+			"STR": 13,
+			"WIL": 6,
+			"_cha": -1,
+			"_con": 0,
+			"_dex": 1,
+			"_int": -2,
+			"_str": 1,
+			"_wil": -1,
+			"HP": 8,
+			"SP": 14,
+			"MHP": 13,
+			"max_HP": 13,
+			"max_SP": 36,
+			"max_MHP": 18,
+			"height": 69,
+			"weight": 185,
+			"size": 1,
+			"OV_melee": -5,
+			"OV_missile": -2,
+			"DV_melee": 11,
+			"DV_missile": 13,
+			"shirt_equipment": null,
+			"pants_equipment": null,
+			"left_hand_weapon": 1,
+			"left_hand_shield": null,
+			"right_hand_weapon": 1,
+			"right_hand_shield": null,
+			"armor_equipment": null,
+			"helmet_equipment": null,
+			"left_glove_equipment": null,
+			"right_glove_equipment": null,
+			"footwear_equipment": null,
+			"necklace_equipment": null,
+			"left_earring_equipment": null,
+			"right_earring_equipment": null,
+			"ring_equipment": null,
+			"trinket_equipment": null,
+			"encumbrance_status": "Light",
+			"encumbrance_mod": 0,
+			"health_status": "Normal",
+			"health_mod": 0,
+			"mental_health_status": "Stressed",
+			"mental_health_mod": -1,
+			"stamina_status": "Tired",
+			"stamina_mod": -1,
+			"stun_status": "Normal",
+			"stun_rounds": 0,
+			"morale_status": "Afraid",
+			"morale_rounds": 4,
+			"morale_check_bonus": 0,
+			"morale_mod": 0,
+			"psychotic_count": 0,
+			"trauma_count": 0,
+			"fright_mod": 0,
+			"initiative_check_bonus": 1,
+			"current_battle": 1,
+			"spells": []
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 1,
+		"fields": {
+			"character": 1,
+			"skill": 1,
+			"trained": true,
+			"role_skill": false,
+			"mod": 5
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 2,
+		"fields": {
+			"character": 1,
+			"skill": 40,
+			"trained": true,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 3,
+		"fields": {
+			"character": 1,
+			"skill": 41,
+			"trained": true,
+			"role_skill": true,
+			"mod": 7
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 4,
+		"fields": {
+			"character": 1,
+			"skill": 10,
+			"trained": true,
+			"role_skill": false,
+			"mod": 5
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 5,
+		"fields": {
+			"character": 1,
+			"skill": 13,
+			"trained": true,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 6,
+		"fields": {
+			"character": 1,
+			"skill": 11,
+			"trained": true,
+			"role_skill": true,
+			"mod": 8
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 7,
+		"fields": {
+			"character": 1,
+			"skill": 14,
+			"trained": true,
+			"role_skill": false,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 8,
+		"fields": {
+			"character": 1,
+			"skill": 21,
+			"trained": true,
+			"role_skill": true,
+			"mod": 6
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 9,
+		"fields": {
+			"character": 1,
+			"skill": 42,
+			"trained": true,
+			"role_skill": true,
+			"mod": 6
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 10,
+		"fields": {
+			"character": 1,
+			"skill": 23,
+			"trained": true,
+			"role_skill": false,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 11,
+		"fields": {
+			"character": 1,
+			"skill": 25,
+			"trained": true,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 12,
+		"fields": {
+			"character": 1,
+			"skill": 26,
+			"trained": true,
+			"role_skill": false,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 13,
+		"fields": {
+			"character": 1,
+			"skill": 30,
+			"trained": true,
+			"role_skill": false,
+			"mod": 6
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 14,
+		"fields": {
+			"character": 1,
+			"skill": 24,
+			"trained": false,
+			"role_skill": false,
+			"mod": 12
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 20,
+		"fields": {
+			"character": 1,
+			"skill": 7,
+			"trained": false,
+			"role_skill": false,
+			"mod": 7
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 26,
+		"fields": {
+			"character": 1,
+			"skill": 17,
+			"trained": false,
+			"role_skill": false,
+			"mod": 7
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 32,
+		"fields": {
+			"character": 1,
+			"skill": 27,
+			"trained": false,
+			"role_skill": false,
+			"mod": 46
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 69,
+		"fields": {
+			"character": 2,
+			"skill": 24,
+			"trained": false,
+			"role_skill": false,
+			"mod": 12
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 70,
+		"fields": {
+			"character": 2,
+			"skill": 1,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 71,
+		"fields": {
+			"character": 2,
+			"skill": 2,
+			"trained": false,
+			"role_skill": false,
+			"mod": -2
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 72,
+		"fields": {
+			"character": 2,
+			"skill": 3,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 73,
+		"fields": {
+			"character": 2,
+			"skill": 4,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 74,
+		"fields": {
+			"character": 2,
+			"skill": 40,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 75,
+		"fields": {
+			"character": 2,
+			"skill": 5,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 76,
+		"fields": {
+			"character": 2,
+			"skill": 6,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 77,
+		"fields": {
+			"character": 2,
+			"skill": 7,
+			"trained": false,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 78,
+		"fields": {
+			"character": 2,
+			"skill": 41,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 79,
+		"fields": {
+			"character": 2,
+			"skill": 8,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 80,
+		"fields": {
+			"character": 2,
+			"skill": 9,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 81,
+		"fields": {
+			"character": 2,
+			"skill": 10,
+			"trained": false,
+			"role_skill": false,
+			"mod": -2
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 82,
+		"fields": {
+			"character": 2,
+			"skill": 11,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 83,
+		"fields": {
+			"character": 2,
+			"skill": 12,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 84,
+		"fields": {
+			"character": 2,
+			"skill": 13,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 85,
+		"fields": {
+			"character": 2,
+			"skill": 14,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 86,
+		"fields": {
+			"character": 2,
+			"skill": 15,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 87,
+		"fields": {
+			"character": 2,
+			"skill": 16,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 88,
+		"fields": {
+			"character": 2,
+			"skill": 17,
+			"trained": false,
+			"role_skill": false,
+			"mod": -6
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 89,
+		"fields": {
+			"character": 2,
+			"skill": 18,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 90,
+		"fields": {
+			"character": 2,
+			"skill": 19,
+			"trained": false,
+			"role_skill": false,
+			"mod": -2
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 91,
+		"fields": {
+			"character": 2,
+			"skill": 20,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 92,
+		"fields": {
+			"character": 2,
+			"skill": 21,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 93,
+		"fields": {
+			"character": 2,
+			"skill": 42,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 94,
+		"fields": {
+			"character": 2,
+			"skill": 32,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 95,
+		"fields": {
+			"character": 2,
+			"skill": 22,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 96,
+		"fields": {
+			"character": 2,
+			"skill": 23,
+			"trained": false,
+			"role_skill": false,
+			"mod": -2
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 97,
+		"fields": {
+			"character": 2,
+			"skill": 25,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 98,
+		"fields": {
+			"character": 2,
+			"skill": 26,
+			"trained": false,
+			"role_skill": false,
+			"mod": -1
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 99,
+		"fields": {
+			"character": 2,
+			"skill": 27,
+			"trained": false,
+			"role_skill": false,
+			"mod": 45
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 100,
+		"fields": {
+			"character": 2,
+			"skill": 28,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 101,
+		"fields": {
+			"character": 2,
+			"skill": 29,
+			"trained": false,
+			"role_skill": false,
+			"mod": 0
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 102,
+		"fields": {
+			"character": 2,
+			"skill": 30,
+			"trained": false,
+			"role_skill": false,
+			"mod": -4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 103,
+		"fields": {
+			"character": 1,
+			"skill": 2,
+			"trained": false,
+			"role_skill": false,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 104,
+		"fields": {
+			"character": 1,
+			"skill": 3,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 105,
+		"fields": {
+			"character": 1,
+			"skill": 4,
+			"trained": false,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 106,
+		"fields": {
+			"character": 1,
+			"skill": 5,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 107,
+		"fields": {
+			"character": 1,
+			"skill": 6,
+			"trained": false,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 108,
+		"fields": {
+			"character": 1,
+			"skill": 8,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 109,
+		"fields": {
+			"character": 1,
+			"skill": 9,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 110,
+		"fields": {
+			"character": 1,
+			"skill": 12,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 111,
+		"fields": {
+			"character": 1,
+			"skill": 15,
+			"trained": false,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 112,
+		"fields": {
+			"character": 1,
+			"skill": 16,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 113,
+		"fields": {
+			"character": 1,
+			"skill": 18,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 114,
+		"fields": {
+			"character": 1,
+			"skill": 19,
+			"trained": false,
+			"role_skill": false,
+			"mod": 1
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 115,
+		"fields": {
+			"character": 1,
+			"skill": 20,
+			"trained": false,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 116,
+		"fields": {
+			"character": 1,
+			"skill": 32,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 117,
+		"fields": {
+			"character": 1,
+			"skill": 22,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 118,
+		"fields": {
+			"character": 1,
+			"skill": 28,
+			"trained": false,
+			"role_skill": false,
+			"mod": 4
+		}
+	}, {
+		"model": "myfarog.characterskill",
+		"pk": 119,
+		"fields": {
+			"character": 1,
+			"skill": 29,
+			"trained": false,
+			"role_skill": false,
+			"mod": 3
+		}
+	}, {
+		"model": "myfarog.charactertalent",
+		"pk": 1,
+		"fields": {
+			"character": 1,
+			"talent": 4
+		}
+	}, {
+		"model": "myfarog.charactertalent",
+		"pk": 2,
+		"fields": {
+			"character": 1,
+			"talent": 66
+		}
+	}, {
+		"model": "myfarog.charactertalent",
+		"pk": 3,
+		"fields": {
+			"character": 1,
+			"talent": 25
+		}
+	}, {
+		"model": "myfarog.charactertalent",
+		"pk": 4,
+		"fields": {
+			"character": 1,
+			"talent": 2
+		}
+	}, {
+		"model": "myfarog.charactertalent",
+		"pk": 5,
+		"fields": {
+			"character": 1,
+			"talent": 14
+		}
+	}, {
+		"model": "myfarog.charactertalent",
+		"pk": 6,
+		"fields": {
+			"character": 1,
+			"talent": 60
+		}
+	}, {
+		"model": "myfarog.charactercompartmentitem",
+		"pk": 1,
+		"fields": {
+			"character": 1,
+			"compartment": 1,
+			"item": 3
+		}
+	}, {
+		"model": "myfarog.party",
+		"pk": 1,
+		"fields": {
+			"name": "Max - Solo",
+			"frightener": 1,
+			"characters": [1]
+		}
+	}, {
+		"model": "myfarog.party",
+		"pk": 2,
+		"fields": {
+			"name": "Merv - Solo",
+			"frightener": 2,
+			"characters": [2]
+		}
+	}
+
+]

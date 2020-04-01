@@ -1,153 +1,164 @@
-class Skill(object):
+class _skill(object):
 
-    def __init__():
+    def __init__(self):
         pass
 
-    def _do():
+    def _do(self, **kwargs):
         pass
 
 
-class Acrobatics(Skill):
+# TODO(Keith): Needs an Environment
+class Acrobatics(_skill):
+
+    def _do(self, **kwargs):
+        # TODO(Keith): We need environment conditions to know the surround area
+        # TODO(Keith): ... so that we can determine fall distance and ground conditions
+        pass
+    
+
+
+class Acting(_skill):
     pass
 
 
-class Acting(Skill):
+class Alchemy(_skill):
     pass
 
 
-class Alchemy(Skill):
+# TODO(Keith): Needs an Environment
+class Climbing(_skill):
     pass
 
 
-class Climbing(Skill):
+class Computers(_skill):
     pass
 
 
-class Computers(Skill):
+class Crafts (_skill):
     pass
 
 
-class Crafts (Skill):
+class Dancing(_skill):
     pass
 
 
-class Dancing(Skill):
+class Dodging(_skill):
     pass
 
 
-class Dodging(Skill):
+class Driving(_skill):
     pass
 
 
-class Driving(Skill):
+class FlutePlaying(_skill):
     pass
 
 
-class FlutePlaying(Skill):
+class Foraging(_skill):
     pass
 
 
-class Foraging (Skill):
+class Fortitude(_skill):
     pass
 
 
-class Fortitude(Skill):
+class Healing(_skill):
     pass
 
 
-class Healing(Skill):
+class Initiative(_skill):
     pass
 
 
-class Initiative(Skill):
+class LyrePlaying(_skill):
     pass
 
 
-class LyrePlaying(Skill):
+class Mechanics(_skill):
     pass
 
 
-class Mechanics(Skill):
+class Melee(_skill):
     pass
 
 
-class Melee(Skill):
+class Missile(_skill):
     pass
 
 
-class Missile(Skill):
+class Morale(_skill):
     pass
 
 
-class Morale(Skill):
+# TODO(Keith): Needs an Environment
+class Navigation(_skill):
     pass
 
 
-class Navigation(Skill):
+class Perception(_skill):
     pass
 
 
-class Perception(Skill):
+class Poetry(_skill):
     pass
 
 
-class Poetry(Skill):
+class ReligiousTradition(_skill):
     pass
 
 
-class ReligiousTradition(Skill):
+class Riding(_skill):
     pass
 
 
-class Riding(Skill):
+class RuleLore(_skill):
     pass
 
 
-class RuleLore(Skill):
+class Science(_skill):
     pass
 
 
-class Science(Skill):
+class Seamanship(_skill):
     pass
 
 
-class Seamanship(Skill):
+class Singing(_skill):
     pass
 
 
-class Singing(Skill):
+class Social_skills(_skill):
     pass
 
 
-class SocialSkills(Skill):
+class Stamina(_skill):
     pass
 
 
-class Stamina(Skill):
+# TODO(Keith): Needs an Environment
+class Stealth(_skill):
     pass
 
 
-class Stealth(Skill):
+# TODO(Keith): Needs an Environment
+class Swimming(_skill):
     pass
 
 
-class Swimming(Skill):
+class Tempo(_skill):
     pass
 
 
-class Tempo(Skill):
+# TODO(Keith): Needs an Environment
+class Tracking(_skill):
     pass
 
 
-class Tracking(Skill):
+class Trickery(_skill):
     pass
 
 
-class Trickery(Skill):
-    pass
-
-
-class WorldLore(Skill):
+class WorldLore(_skill):
     pass
 
 

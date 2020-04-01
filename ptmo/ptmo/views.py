@@ -8,11 +8,12 @@ from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.conf import settings
-from urllib import urlencode
+#from urllib import urlencode
 from slackclient import SlackClient
 from dynamic_db_router import in_database
 
-from models import *
+from ptmo.models import *
+
 
 class InitTutorialApi(APIView):
 
@@ -63,10 +64,16 @@ class SlackButtonApi(APIView):
             slack_message = invalid_button(payload)
         return Response(slack_message)
 
+# From here down goes in utils or models
+INVESTIGATE_INDEX = 1
+ACTION_INDEX = 2
+
+
 def set_dynamic_db_config(user_id):
     db_config = dict(settings.DATABASES['default'])
     db_config['NAME'] = "ptmo_"+user_id
     return db_config
+
 
 def init_tutorial(request):
     import subprocess
@@ -76,10 +83,10 @@ def init_tutorial(request):
     db_settings = settings.DATABASES['default']
 
     con = connect(
-        dbname      = db_settings['NAME'], 
-        user        = db_settings['USER'], 
-        host        = db_settings['HOST'], 
-        password    = db_settings['PASSWORD']
+        dbname=db_settings['NAME'],
+        user=db_settings['USER'],
+        host=db_settings['HOST'],
+        password=db_settings['PASSWORD']
     )
     dbname = "{}_{}".format(db_settings['NAME'],request.data['user_id'])
 
@@ -87,7 +94,8 @@ def init_tutorial(request):
     cur = con.cursor()
     try:
         cur.execute('CREATE DATABASE ' + dbname)
-    except:
+    except Exception as e:
+        import pdb; pdb.set_trace()
         cur.execute('DROP DATABASE ' + dbname)
         cur.execute('CREATE DATABASE ' + dbname)
     
@@ -100,7 +108,7 @@ def init_tutorial(request):
             db_settings['USER'], 
             dbname.lower()
         ),
-        shell = True
+        shell=True
     )
     f.close()
 
@@ -119,27 +127,27 @@ def init_tutorial(request):
         channel = resp['group']['id']
 
         UserPreference.objects.create(
-            user    = user,
-            key     = "tutorial_channel_id",
-            value   = channel
+            user=user,
+            key="tutorial_channel_id",
+            value=channel
         )
 
-        resp = sca.api_call("groups.invite",channel=channel, user=settings.BOT_SLACK_USER_ID)
-        resp = sca.api_call("groups.invite",channel=channel, user=request.data['user_id'])
+        resp = sca.api_call("groups.invite", channel=channel, user=settings.BOT_SLACK_USER_ID)
+        resp = sca.api_call("groups.invite", channel=channel, user=request.data['user_id'])
 
     slack_message = dict(
-        response_type   = "ephemeral",
-        text            = "Your level has been generated.",
-        attachments     = [
+        response_type="ephemeral",
+        text="Your level has been generated.",
+        attachments=[
             dict(
-                callback_id = "tutorial",
-                text        = " ",
-                actions     = [
+                callback_id="tutorial",
+                text=" ",
+                actions=[
                     dict(
-                        name    = "start__tutorial",
-                        type    = "button",
-                        text    = "Begin",
-                        value   = "true"
+                        name="start__tutorial",
+                        type="button",
+                        text="Begin",
+                        value="true"
                     )
                 ]
             )
@@ -158,8 +166,9 @@ def tutorial_intro(request):
 
     db_config = set_dynamic_db_config(payload['user']['id'].lower())
 
-    with in_database(db_config):
+    with in_database(db_config, write=True):
         level = Level.objects.get(name='tutorial')
+        Inventory.objects.create(user=user, item=Item.objects.get(name='notebook'))
 
     new_slack_message = dict(
        channel     = channel,
@@ -201,6 +210,36 @@ def strip_actions(attachments, keep_text = False):
     return stripped
 
 
+def load_room_doors(db_config, attachments, room):
+    with in_database(db_config, write=True):
+        d_q = Door.objects.filter(curr_room=room)
+
+        for door in d_q:
+            door_name = "door__{}__{}__{}".format(location, room.name, door.dest_room.name)
+            item_dict = dict(
+                text    = door.button_text,
+                value   = door_name
+            )
+            attachments[INVESTIGATE_INDEX]['actions'][0]['options'].append(item_dict)
+
+            door_name = "room__{}__{}__{}".format(location, dest_room, door.dest_room.name)
+            door_dict = dict(
+                name    = door_name,
+                type    = "button",
+                text    = door.button_text,
+                value   = True
+            )
+            if door.locked and door.attempted:
+                door_dict['style'] = 'danger'
+                door_dict['confirm'] = dict(
+                    title           = "You can't do that",
+                    text            = door.lock_text,
+                    ok_text         = "Try again",
+                    dismiss_text    = "Got it"
+                )
+            attachments[ACTION_INDEX]['actions'].append(door_dict)
+    return attachments
+
 def load_room(payload, location, dest_room_name, curr_room_name = None, new_room = True, history = []):
 
     if not history and 'original_message' in payload:
@@ -217,6 +256,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
 
         dest_room = dr_q[0]
 
+        # Check if door is locked
         if curr_room_name:
 
             door_q = Door.objects.filter(curr_room__name=curr_room_name, dest_room=dest_room)
@@ -320,6 +360,7 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
             )
             new_slack_message['attachments'][investigate_index]['actions'][0]['options'].append(item_dict)
 
+        # ____ load_room_doors ____ #
         for door in ud_q:
             door_name = "door__{}__{}__{}".format(location, dest_room, door.dest_room.name)
             item_dict = dict(
@@ -346,6 +387,8 @@ def load_room(payload, location, dest_room_name, curr_room_name = None, new_room
                     dismiss_text    = "Got it"
                 )
             new_slack_message['attachments'][action_index]['actions'].append(door_dict)
+        # ^^^^ load_room_doors ^^^^ #
+
 
         for room_item in iri_q:
             item_name = "item__{}__{}__{}".format(location, dest_room, room_item.item.name)

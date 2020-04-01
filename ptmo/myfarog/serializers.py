@@ -1,12 +1,40 @@
 import math
 from rest_framework import serializers, response
 from myfarog.models import (
+    Skill
+)
+from myfarog.battle import (
+    Battle,
+    BattleRound,
+    BattleRoundAction
+)
+from myfarog.character import (
     Character,
     CharacterCut,
     CharacterSkill,
     CharacterTalent,
     Skill
 )
+
+class BattleSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Battle
+        fields = ['name', 'parties', 'rounds']
+
+
+class BattleRoundSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BattleRound
+        fields = '__all__'
+
+
+class BattleRoundActionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BattleRoundAction
+        fields = '__all__'
 
 
 class CharacterSkillSerializer(serializers.ModelSerializer):
@@ -69,7 +97,7 @@ class CharacterSerializer(serializers.ModelSerializer):
             'CON', 'CHA', 'DEX', 'INT', 'STR', 'WIL',
             '_con', '_cha', '_dex', '_int', '_str', '_wil',
             'HP', 'SP', 'MHP', 'max_HP', 'max_SP', 'max_MHP',
-            'pyschotic_count', 'fright_mod', 'trauma_count',
+            'psychotic_count', 'fright_mod', 'trauma_count',
             'morale_rounds', 'morale_check_bonus', 'morale_status',
             'encumbrance_status', 'encumbrance_mod', 'health_status',
             'health_mod', 'mental_health_status', 'mental_health_mod',

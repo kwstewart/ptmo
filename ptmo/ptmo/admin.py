@@ -1,15 +1,8 @@
 from django.contrib import admin
 
-from models import *
+from ptmo.models import *
 
-
-class UserPreferenceAdmin(admin.ModelAdmin):
-    list_display = ('user', 'key', 'value')
-    search_fields = ['user', 'key', 'value']
-    save_as = True
-
-admin.site.register(UserPreference, UserPreferenceAdmin)
-
+"""
 class LevelAdmin(admin.ModelAdmin):
     list_display = ('name', 'text')
     search_fields = ['name']
@@ -59,3 +52,4 @@ class InventoryAdmin(admin.ModelAdmin):
     search_fields = ['user','item']
     save_as = True
 admin.site.register(Inventory, InventoryAdmin)
+"""

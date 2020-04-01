@@ -1,6 +1,1 @@
-Django==2.0.5
-djangorestframework==3.8.2
-Pillow==5.1.0
-psycopg2==2.7.4
-pytz==2018.4
-sorl-thumbnail==12.4.1
+-r ptmo/source_framework/requirements.txt

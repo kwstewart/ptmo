@@ -1,109 +1,113 @@
 from myfarog.utils.model import Dice
 
-class _spell(object):
+class Spell(object):
+
+    power_levels = []
 
     def __init__(self):
         pass
 
-    def cast(self, caster, target):
+    def cast(self, caster, power_level, target):
         raise ValueError('You should be overriding this in your extension class.')
 
 
-class Alarm_Bell(_spell):
+class Alarm_Bell(Spell):
     pass
 
 
-class Awakening(_spell):
+class Awakening(Spell):
     pass
 
 
-class Bear_Hug(_spell):
+class Bear_Hug(Spell):
     pass
 
 
-class Calm_Creature(_spell):
+class Calm_Creature(Spell):
     pass
 
 
-class Charm(_spell):
+class Charm(Spell):
     pass
 
 
-class Clairvoyance(_spell):
+class Clairvoyance(Spell):
     pass
 
 
-class Conscience(_spell):
+class Conscience(Spell):
     pass
 
 
-class Courage(_spell):
+class Courage(Spell):
     pass
 
 
-class Create_Hulda(_spell):
+class Create_Hulda(Spell):
     pass
 
 
-class Creatue_Stone_Guardian(_spell):
+class Creatue_Stone_Guardian(Spell):
     pass
 
 
-class Create_Nar(_spell):
+class Create_Nar(Spell):
     pass
 
 
-class Create_Wight(_spell):
+class Create_Wight(Spell):
     pass
 
 
-class Cure_Malaria(_spell):
+class Cure_Malaria(Spell):
     pass
 
 
-class Cure_Trama(_spell):
+class Cure_Trama(Spell):
     pass
 
 
-class Curse(_spell):
+class Curse(Spell):
     pass
 
 
-class Disclose_Observation(_spell):
+class Disclose_Observation(Spell):
     pass
 
 
-class Discover_Posion(_spell):
+class Discover_Posion(Spell):
     pass
 
 
-class Dispel(_spell):
+class Dispel(Spell):
     pass
 
 
-class Divine_Language(_spell):
+class Divine_Language(Spell):
     pass
 
 
-class Divine_Senses(_spell):
+class Divine_Senses(Spell):
     pass
 
 
-class Eternal_Flame(_spell):
+class Eternal_Flame(Spell):
     pass
 
 
-class Ettin_Eyes(_spell):
+class Ettin_Eyes(Spell):
     pass
 
 
-class False_Sound(_spell):
+class False_Sound(Spell):
     pass
 
 
-class Fear(_spell):
+class Fear(Spell):
+
+    power_levels = [1]
     
-    def cast(self, caster, target):
+    def cast(self, caster, power_level, target):
         log = dict(
             labels=dict(),
             stats=dict(target_starting_morale_status=target.morale_status)
@@ -113,7 +117,7 @@ class Fear(_spell):
         # TODO(Keith): Check for immunity
 
         log['labels']['action'] = "{} casts Fear on {} ".format(caster.name, target.name)
-
+        import pdb; pdb.set_trace()
         base                = log['stats']['base']                  = 12
         target_fortitude    = log['stats']['target_fortitude']      = target.skills['Fortitude']
         caster_proficiency  = log['stats']['caster_proficiency']    = caster.skills['Fortitude']
@@ -143,270 +147,272 @@ class Fear(_spell):
 
         return log
 
-        
 
-
-class Fireball(_spell):
+class Fireball(Spell):
     pass
 
 
-class Fire_Bolt(_spell):
+class Fire_Bolt(Spell):
     pass
 
 
-class Flight(_spell):
+class Flight(Spell):
     pass
 
 
-class Fog(_spell):
+class Fog(Spell):
     pass
 
 
-class Fruit_of_Nature(_spell):
+class Fruit_of_Nature(Spell):
     pass
 
 
-class Fulgjon(_spell):
+class Fulgjon(Spell):
     pass
 
 
-class Fumble_Foe(_spell):
+class Fumble_Foe(Spell):
     pass
 
 
-class Ghost_Feet(_spell):
+class Ghost_Feet(Spell):
     pass
 
 
-class Grace_of_NurpuR(_spell):
+class Grace_of_NurpuR(Spell):
     pass
 
 
-class Hammer(_spell):
+class Hammer(Spell):
     pass
 
 
-class Heal(_spell):
+class Heal(Spell):
     pass
 
 
-class Heat_Signature(_spell):
+class Heat_Signature(Spell):
     pass
 
 
-class Hood_of_HadnuR(_spell):
+class Hood_of_HadnuR(Spell):
     pass
 
 
-class Hostility(_spell):
+class Hostility(Spell):
     pass
 
 
-class Hunt(_spell):
+class Hunt(Spell):
     pass
 
 
-class Ice_Heart(_spell):
+class Ice_Heart(Spell):
     pass
 
 
-class Illusion(_spell):
+class Illusion(Spell):
     pass
 
 
-class Initiate(_spell):
+class Initiate(Spell):
     pass
 
 
-class Levitation(_spell):
+class Levitation(Spell):
     pass
 
 
-class Light(_spell):
-    def cast(self):
+class Light(Spell):
+    def cast(self, caster, power_level, target):
         print("You cast light!")
 
 
-class Lightning(_spell):
+class Lightning(Spell):
+
+    power_levels = [1]
+    
+    def cast(self, caster, power_level, target):
+        pass
+
+
+class Lung_of_NerpuR(Spell):
     pass
 
 
-class Lung_of_NerpuR(_spell):
+class Magenerpi(Spell):
     pass
 
 
-class Magenerpi(_spell):
+class Malaria(Spell):
     pass
 
 
-class Malaria(_spell):
+class Manipulate_Water(Spell):
     pass
 
 
-class Manipulate_Water(_spell):
+class Manipulate_Weather(Spell):
     pass
 
 
-class Manipulate_Weather(_spell):
+class Manipulate_Wind(Spell):
     pass
 
 
-class Manipulate_Wind(_spell):
+class Mask(Spell):
     pass
 
 
-class Mask(_spell):
+class Mind_Control(Spell):
     pass
 
 
-class Mind_Control(_spell):
+class Mind_Reading(Spell):
     pass
 
 
-class Mind_Reading(_spell):
+class Mistletoe(Spell):
     pass
 
 
-class Mistletoe(_spell):
+class Moss_Mask(Spell):
     pass
 
 
-class Moss_Mask(_spell):
+class Neutalise_Posion(Spell):
     pass
 
 
-class Neutalise_Posion(_spell):
+class Night_Vision(Spell):
     pass
 
 
-class Night_Vision(_spell):
+class Observation(Spell):
     pass
 
 
-class Observation(_spell):
+class Paralyse(Spell):
     pass
 
 
-class Paralyse(_spell):
+class Petrifacation(Spell):
     pass
 
 
-class Petrifacation(_spell):
+class Poison(Spell):
     pass
 
 
-class Poison(_spell):
+class Purify_Nutrition(Spell):
     pass
 
 
-class Purify_Nutrition(_spell):
+class Remove_Curse(Spell):
     pass
 
 
-class Remove_Curse(_spell):
+class Remove_Paralysis(Spell):
     pass
 
 
-class Remove_Paralysis(_spell):
+class Resist_Disease(Spell):
     pass
 
 
-class Resist_Disease(_spell):
+class Resist_Poison(Spell):
     pass
 
 
-class Resist_Poison(_spell):
+class Restoration(Spell):
     pass
 
 
-class Restoration(_spell):
+class Resurrection(Spell):
     pass
 
 
-class Resurrection(_spell):
+class Reverse_Petrification(Spell):
     pass
 
 
-class Reverse_Petrification(_spell):
+class Sanctuary(Spell):
     pass
 
 
-class Sanctuary(_spell):
+class Sacred_Ground(Spell):
     pass
 
 
-class Sacred_Ground(_spell):
+class Seven_Mile_Boots(Spell):
     pass
 
 
-class Seven_Mile_Boots(_spell):
+class Silence(Spell):
     pass
 
 
-class Silence(_spell):
+class Snowflake(Spell):
     pass
 
 
-class Snowflake(_spell):
+class Sorcerous_Shape(Spell):
     pass
 
 
-class Sorcerous_Shape(_spell):
+class Sorcerous_Sleep(Spell):
     pass
 
 
-class Sorcerous_Sleep(_spell):
+class Spirit_Voice(Spell):
     pass
 
 
-class Spirit_Voice(_spell):
+class Summon_Creature(Spell):
     pass
 
 
-class Summon_Creature(_spell):
+class Telekinesis(Spell):
     pass
 
 
-class Telekinesis(_spell):
+class Telepathy(Spell):
     pass
 
 
-class Telepathy(_spell):
+class Teleportation(Spell):
     pass
 
 
-class Teleportation(_spell):
+class Totem_Animal(Spell):
     pass
 
 
-class Totem_Animal(_spell):
+class Trojan_Fortress(Spell):
     pass
 
 
-class Trojan_Fortress(_spell):
+class Troll_Fear(Spell):
     pass
 
 
-class Troll_Fear(_spell):
+class Veil(Spell):
     pass
 
 
-class Veil(_spell):
+class Void_Travel(Spell):
     pass
 
 
-class Void_Travel(_spell):
+class Wall_of_Thorns(Spell):
     pass
 
 
-class Wall_of_Thorns(_spell):
+class Whirlwind(Spell):
     pass
 
 
-class Whirlwind(_spell):
-    pass
-
-
-class Wind_Gust(_spell):
+class Wind_Gust(Spell):
     pass
 

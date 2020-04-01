@@ -1,0 +1,261 @@
+<html>
+    <head>
+        <title>Battle Area</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+        <style>
+            .my-character-wrap { 
+                border: 2px solid black; 
+                padding: 10px;
+            }
+            .my-statuses-wrap { 
+                border: 1px solid black; 
+                padding: 5px;
+                width: 200px;
+            }
+            .character-wrap { 
+                border: 2px solid black; 
+                height: 200px;
+                padding: 10px;
+                width:25%;
+            }
+            .char-statuses-wrap { 
+                border: 1px solid black; 
+                padding: 5px;
+                width: 200px;
+            }
+            .character-wrap .stat-wrap { float: left; clear:both; }
+            .character-wrap .stat-wrap div { float: left; margin:1px; }
+            .character-wrap .status-wrap { float: left; clear:both; }
+            .character-wrap .status-wrap div { float: left; margin:1px; }
+            .character-wrap .char-stats-wrap { float:left; }
+            .character-wrap .char-statuses-wrap { margin-left:10px; float:left; }
+            .character-wrap .char-actions { margin-left:10px; float:left; }
+            .clear { float:none; clear:both; }
+            #battle-log-wrap { text-align: center }
+            #battle-log { height:200px; margin:auto; width:700px; }
+        </style>
+    </head>
+    <body>
+        <h1 id="battle-name" align=center>{{battle.name}}</h1>
+        <h2 id="battle-round" align=center>{{battle.round}}</h1>
+        {% for party in battle.parties %}
+        <div class="party">
+            <div class="characters">
+                {% for char in party.characters %}
+                <div class="character-wrap" data-id="{{char.id}}">
+                    <div class="char-stats-wrap">
+                        <div class="char-name">{{char.name}}</div>
+                        <div class="char-avatar"><img src=""></div>
+                        <div class="HP-wrap stat-wrap">
+                            <div class="char-label">HP: </div>
+                            <div class="char-HP stat">{{char.HP}}</div>
+                            <div class="char-label"> / </div>
+                            <div class="char-max-HP stat">{{char.max_HP}}</div>
+                        </div>
+                        <div class="SP-wrap stat-wrap">
+                            <div class="char-label">SP: </div>
+                            <div class="char-SP stat">{{char.SP}}</div>
+                            <div class="char-label"> / </div>
+                            <div class="char-max-SP stat">{{char.max_SP}}</div>
+                        </div>
+                        <div class="MHP-wrap stat-wrap">
+                            <div class="char-label">MHP: </div>
+                            <div class="char-MHP stat">{{char.MHP}}</div>
+                            <div class="char-label"> / </div>
+                            <div class="char-max-MHP stat">{{char.max_MHP}}</div>
+                        </div>
+                    </div>
+                    <div class="char-statuses-wrap">
+                        <b>Statuses</b><br>
+                        <hr>
+                        <div class="status-wrap morale-wrap">
+                            <div class="char-label">Morale: </div>
+                            <div class="char-morale-status">{{char.morale_status}}</div>
+                        </div>
+                        <div class="status-wrap stun-wrap">
+                            <div class="char-label">Stun: </div>
+                            <div class="char-stun-status">{{char.stun_status}}</div>
+                        </div>
+                        <div class="status-wrap encumbrance-wrap">
+                            <div class="char-label">Encumbrance: </div>
+                            <div class="char-encumbrance-status">{{char.encumbrance_status}}</div>
+                        </div>
+                        <div class="status-wrap health-wrap">
+                            <div class="char-label">Health: </div>
+                            <div class="char-health-status">{{char.health_status}}</div>
+                        </div>
+                        <div class="status-wrap stamina-wrap">
+                            <div class="char-label">Stamina: </div>
+                            <div class="char-stamina-status">{{char.stamina_status}}</div>
+                        </div>
+                        <div class="status-wrap mental-health-wrap">
+                            <div class="char-label">Mental Health: </div>
+                            <div class="char-mental-health-status">{{char.mental_health_status}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+        <div id="battle-log-wrap">
+            <textarea id="battle-log"></textarea>
+        </div>
+        <div class="my-character character-wrap" data-id="{{character.id}}">
+            <div class="char-stats-wrap">
+                <div class="char-name">{{character.name}}</div>
+                <div class="char-avatar"><img src=""></div>
+                <div class="HP-wrap stat-wrap">
+                    <div class="char-label">HP: </div>
+                    <div class="char-HP stat">{{character.HP}}</div>
+                    <div class="char-label"> / </div>
+                    <div class="char-max-HP stat">{{character.max_HP}}</div>
+                </div>
+                <div class="SP-wrap stat-wrap">
+                    <div class="char-label">SP: </div>
+                    <div class="char-SP stat">{{character.SP}}</div>
+                    <div class="char-label"> / </div>
+                    <div class="char-max-SP stat">{{character.max_SP}}</div>
+                </div>
+                <div class="MHP-wrap stat-wrap">
+                    <div class="char-label">MHP: </div>
+                    <div class="char-MHP stat">{{character.MHP}}</div>
+                    <div class="char-label"> / </div>
+                    <div class="char-max-MHP stat">{{character.max_MHP}}</div>
+                </div>
+            </div>
+            <div class="char-statuses-wrap">
+                <b>Statuses</b><br>
+                <hr>
+                <div class="status-wrap morale-wrap">
+                    <div class="char-label">Morale: </div>
+                    <div class="char-morale-status">{{character.morale_status}}</div>
+                </div>
+                <div class="status-wrap stun-wrap">
+                    <div class="char-label">Stun: </div>
+                    <div class="char-stun-status">{{character.stun_status}}</div>
+                </div>
+                <div class="status-wrap encumbrance-wrap">
+                    <div class="char-label">Encumbrance: </div>
+                    <div class="char-encumbrance-status">{{character.encumbrance_status}}</div>
+                </div>
+                <div class="status-wrap health-wrap">
+                    <div class="char-label">Health: </div>
+                    <div class="char-health-status">{{character.health_status}}</div>
+                </div>
+                <div class="status-wrap stamina-wrap">
+                    <div class="char-label">Stamina: </div>
+                    <div class="char-stamina-status">{{character.stamina_status}}</div>
+                </div>
+                <div class="status-wrap mental-health-wrap">
+                    <div class="char-label">Mental Health: </div>
+                    <div class="char-mental-health-status">{{character.mental_health_status}}</div>
+                </div>
+            </div>
+            <div class="char-actions">
+                <input type="button" id="attack-button" value="Attack">
+                <input type="button" id="cast-button" value="Cast Fear">
+            </div>            
+        </div>
+
+        <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            var battle_id = {{battle.id}};
+            var current_round = {{battle.round}};
+
+            function update_battle(battle_data) {
+                console.log(battle_data);
+                if(battle_data.step == 0){
+                    current_round = battle_data.round
+                    $("#battle-round").text(current_round)
+                }
+                if('character_updates' in battle_data) {
+                    $.each(battle_data.character_updates,function(i, c){
+                        if('health_status' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-health-status").html(c.health_status)
+                        }
+                        if('HP' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-HP").html(c.HP)
+                        }
+                        if('mental_health_status' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-mental_health-status").html(c.mental_health_status)
+                        }
+                        if('MHP' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-MHP").html(c.MHP)
+                        }
+                        if('morale_status' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-morale-status").html(c.morale_status)
+                        }
+                        if('SP' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-SP").html(c.SP)
+                        }
+                        if('stamina_status' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-stamina-status").html(c.stamina_status)
+                        }
+                        if('stun_status' in c) {
+                            $(".character-wrap[data-id='"+i+"'] .char-stun-status").html(c.stun_status)
+                        }
+                    });                        
+                }
+                if('logs' in battle_data) {
+                    $.each(battle_data.logs,function(i, c){
+                        $("#battle-log").val($("#battle-log").val()+"\n"+i+": "+c)
+                        $("#battle-log").scrollTop($("#battle-log")[0].scrollHeight)
+                    });
+                }
+
+            }
+
+            $(function () {
+                var socket = io("http://localhost:3000");
+                socket.on('battle update', function(battle_data){
+                    update_battle(battle_data)
+                });
+            });
+
+            $(document).ready(function () {
+
+                $("#attack-button").bind('click', function() {
+                    $.ajax({
+                        'url':"/api/myfarog/battle/"+battle_id+"/round/"+current_round+"/action/", 
+                        'data':JSON.stringify({
+                            'character_id': {{character.id}},
+                            'action': 'attack',
+                            'weapon': '',
+                            'target_id': 2
+                        }), 
+                        'contentType': 'application/json', 
+                        'type':"POST",
+                        'success': function(data) {
+                            
+                        }
+                    })
+                });   
+
+                $("#cast-button").bind('click', function() {
+                    $.ajax({
+                        'url':"/api/myfarog/battle/"+battle_id+"/round/"+current_round+"/action/", 
+                        'data':JSON.stringify({
+                            'character_id': {{character.id}},
+                            'action': 'cast',
+                            'spell': 'Fear',
+                            'power_level': 1,
+                            'target_id': 2
+                        }),
+                        'contentType': 'application/json', 
+                        'type':"POST",
+                        'success': function(data) {
+
+                        }
+                    })
+                });
+
+
+            });
+
+            
+        </script>
+    </body>
+</html>

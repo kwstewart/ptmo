@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import include, path
 
-from views import *
+from ptmo.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -24,4 +25,6 @@ urlpatterns = [
     url(r'^slack/command/', InitTutorialApi.as_view(), name='api-init-tutorial'),
     url(r'^slack/options/', SlackButtonApi.as_view(), name='api-slack-options'),
     url(r'^slack/webhook/', SlackWebhookApi.as_view(), name='api-slack-webhook'),
+    # path('', include('source_framework.core.urls')),
+
 ]

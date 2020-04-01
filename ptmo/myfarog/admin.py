@@ -5,13 +5,10 @@ from django.contrib import admin
 
 from myfarog.models import (
     Armor,
-    Character,
-    CharacterCompartmentItem,
-    CharacterCut,
-    CharacterSkill,
-    CharacterTalent,
     Container,
     Compartment,
+    Culture,
+    CultureGenderSkill,
     Earring,
     Footwear,
     Glove,
@@ -24,12 +21,12 @@ from myfarog.models import (
     Pants,
     Ring,
     Role,
-    RolePrerequisites, 
     RoleSkill,
     Shield,
     Shirt,
     Skill,
     Species,
+    SpeciesGenderMod,
     Spell,
     SpellElement,
     Talent,
@@ -38,6 +35,19 @@ from myfarog.models import (
     Trinket,
     Weapon,
 )
+from myfarog.battle import (
+    Battle
+)
+
+from myfarog.character import (
+    Character,
+    CharacterCompartmentItem,
+    CharacterCut,
+    CharacterSkill,
+    CharacterTalent,
+
+)
+
 
 from myfarog.forms import (
     ArmorModelForm,
@@ -130,6 +140,22 @@ class ContainerAdmin(admin.ModelAdmin):
     save_as         = True
 
 admin.site.register(Container, ContainerAdmin)
+
+
+class CultureAdmin(admin.ModelAdmin):
+    list_display    = ('name',)
+    search_fields   = ['name']
+    save_as         = True
+
+admin.site.register(Culture, CultureAdmin)
+
+
+class CultureGenderSkillAdmin(admin.ModelAdmin):
+    list_display    = ('culture', 'gender', 'skill')
+    search_fields   = ['name', 'gender', 'skill']
+    save_as         = True
+
+admin.site.register(CultureGenderSkill, CultureGenderSkillAdmin)
 
 
 class EarringAdmin(admin.ModelAdmin):
@@ -245,15 +271,6 @@ class RoleAdmin(admin.ModelAdmin):
 admin.site.register(Role, RoleAdmin)
 
 
-class RolePrerequisitesAdmin(admin.ModelAdmin):
-    list_display = ('type', 'value')
-    search_fields = ['type']
-    ordering = ['type']
-    save_as = True
-
-admin.site.register(RolePrerequisites, RolePrerequisitesAdmin)
-
-
 class RoleSkillAdmin(admin.ModelAdmin):
     list_display = ('role', 'skill',)
     search_fields = ['role', 'skill']
@@ -294,11 +311,19 @@ admin.site.register(Skill, SkillAdmin)
 
 
 class SpeciesAdmin(admin.ModelAdmin):
-    list_display = ('name', 'gender')
-    search_fields = ['name', 'gender']
+    list_display = ('name',)
+    search_fields = ['name']
     save_as = True
 
 admin.site.register(Species, SpeciesAdmin)
+
+
+class SpeciesGenderModAdmin(admin.ModelAdmin):
+    list_display = ('species', 'gender')
+    search_fields = ['species', 'gender']
+    save_as = True
+
+admin.site.register(SpeciesGenderMod, SpeciesGenderModAdmin)
 
 
 class SpellAdmin(admin.ModelAdmin):

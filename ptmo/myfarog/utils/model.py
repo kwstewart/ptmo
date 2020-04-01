@@ -6,15 +6,21 @@ class Dice(object):
     sides   = 0
     offset  = 0
     def __init__(self, count, sides = 0, offset = 0):
-        # TODO(Keith): Make this work with strings like "D12" instead of forcing "1D12"
-        if not sides and type(count) == str:
+        # Note(Keith): If it was just passed as Dice(1), just return the 1
+        if not sides and type(count) == int:
+            sides = 1
+
+        # Note(Keith): If it was passed as a string Dice("3D6"), parse it out
+        elif not sides and type(count) == str:
             parts = re.split('D', count)
             parts2 = re.split('\+|\-', parts[1])
+            if not parts[0]:
+                parts[0] = 1
             count = int(parts[0])
             if len(parts2) == 2:
                 sides = int(parts2[0])
                 offset = int(parts2[1])
-                if '-' in dice_string:
+                if '-' in parts[1]:
                     offset *= -1
             else:
                 sides = int(parts[1])

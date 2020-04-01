@@ -1,15 +1,6 @@
 from django.db import models
+# from source_framework.core.models import SourceUser
 from django.contrib.auth.models import User
-
-class UserPreference(models.Model):
-    user    = models.ForeignKey(User)
-    key     = models.CharField(max_length=255)
-    value   = models.CharField(max_length=255)
-    
-    class Meta:
-        verbose_name = "UserPreference"
-        verbose_name_plural = "UserPreferences"
-
 
 class Level(models.Model):
     name            = models.CharField(max_length=16)
@@ -24,7 +15,7 @@ class Level(models.Model):
         return '%s' % (self.name)
 
 class Location(models.Model):
-    level           = models.ForeignKey(Level)
+    level           = models.ForeignKey(Level, on_delete=models.DO_NOTHING)
     name            = models.CharField(max_length=64)
     slack_channel   = models.CharField(max_length=16)
     
@@ -37,7 +28,7 @@ class Location(models.Model):
 
 
 class Room(models.Model):
-    location    = models.ForeignKey(Location)
+    location    = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     name        = models.CharField(max_length=64)
     clean_name  = models.CharField(max_length=64, blank=True, null=True)
     text        = models.TextField()
@@ -52,8 +43,8 @@ class Room(models.Model):
 
 
 class Door(models.Model):
-    curr_room       = models.ForeignKey(Room, related_name="current_room")
-    dest_room       = models.ForeignKey(Room, related_name="destination_room")
+    curr_room       = models.ForeignKey(Room, related_name="current_room", on_delete=models.DO_NOTHING)
+    dest_room       = models.ForeignKey(Room, related_name="destination_room", on_delete=models.DO_NOTHING)
     button_text     = models.CharField(max_length=16)
     inspect_text    = models.TextField()
     inspected       = models.BooleanField(default=False)
@@ -83,8 +74,8 @@ class Item(models.Model):
 
 
 class RoomItem(models.Model):
-    room        = models.ForeignKey(Room)
-    item        = models.ForeignKey(Item)
+    room        = models.ForeignKey(Room, on_delete=models.DO_NOTHING)
+    item        = models.ForeignKey(Item, on_delete=models.DO_NOTHING)
     button_text = models.CharField(max_length=16, null=True, blank=True)
     inspected   = models.BooleanField(default=False)
     attempted   = models.BooleanField(default=False)
@@ -98,8 +89,8 @@ class RoomItem(models.Model):
 
 
 class Inventory(models.Model):
-    user    =  models.ForeignKey(User)
-    item    =  models.ForeignKey(Item)
+    user    =  models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    item    =  models.ForeignKey(Item, on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name        = "Inventory"
